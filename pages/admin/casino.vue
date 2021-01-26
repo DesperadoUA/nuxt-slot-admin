@@ -1,11 +1,10 @@
 <template>
-
+  
 </template>
 
 <script>
     export default {
-        name: "index.vue",
-        layout: 'admin',
+        name: "casino"
     }
 </script>
 

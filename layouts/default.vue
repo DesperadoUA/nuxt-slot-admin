@@ -1,117 +1,120 @@
 <template>
-  <v-app dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-app-bar
-      :clipped-left="clipped"
-      fixed
-      app
-    >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title" />
-      <v-spacer />
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
-    </v-app-bar>
-    <v-main>
-      <v-container>
-        <nuxt />
-      </v-container>
-    </v-main>
-    <v-navigation-drawer
-      v-model="rightDrawer"
-      :right="right"
-      temporary
-      fixed
-    >
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-footer
-      :absolute="!fixed"
-      app
-    >
-      <span>&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer>
+  <v-app>
+    <v-container fluid fill-height>
+      <v-layout align-center justify-center>
+        <v-flex xs12 sm8 md3>
+          <v-card class="elevation-12">
+            <v-toolbar dark color="deep-orange darken-2 font_weight_bold">
+              <v-toolbar-title>Login form</v-toolbar-title>
+            </v-toolbar>
+            <v-card-text>
+              <v-form v-model="valid" ref="form" validation>
+                <v-text-field
+                        class="font_weight_bold"
+                        prepend-icon="mdi-email"
+                        name="email"
+                        label="Email"
+                        type="email"
+                        color="white"
+                        v-model="email"
+                        :rules="emailRules"
+                        @input="writeForm"
+                ></v-text-field>
+                <v-text-field
+                        class="font_weight_bold"
+                        prepend-icon="mdi-account-key"
+                        name="password"
+                        label="Password"
+                        type="password"
+                        color="white"
+                        :counter="6"
+                        v-model="password"
+                        :rules="passwordRules"
+                        @input="writeForm"
+                ></v-text-field>
+                <span class="ma-1 text-center d-block red--text">{{error}}</span>
+              </v-form>
+            </v-card-text>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn
+                      class="font_weight_bold"
+                      color="deep-orange darken-2"
+                      @click="onSubmit"
+                      :loading="loading"
+                      :disabled="!valid || loading"
+              >Login</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-flex>
+      </v-layout>
+    </v-container>
   </v-app>
 </template>
-
 <script>
-export default {
-  data () {
-    return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
+    import DAL_Login from '../DAL/login'
+    export default {
+        name: "login",
+        data(){
+            return {
+                email: '',
+                password: '',
+                valid: false,
+                emailRules:
+                    [
+                        v => !!v || 'E-mail is required',
+                        v => !v || /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
+                    ],
+                passwordRules:
+                    [
+                        v => !!v || 'Password is required',
+                        v => (v && v.length >= 6) || 'Password length must be more then 6 characters'
+                    ]
+            }
         },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
+        computed: {
+            loading(){
+                //return this.$store.getters.loading
+            },
+            error(){
+                // return this.$store.getters['common/error']
+            }
+        },
+        methods: {
+            async onSubmit(){
+                if(this.$refs.form.validate()) {
+
+                    const email = this.email
+                    const password = this.password
+                    const result =  await DAL_Login.checkLogin(email, password)
+                    if(result.data.confirm === 'ok') {
+                        this.$store.dispatch('user/setUser', {
+                            id: result.data.data.id,
+                            session: result.data.session,
+                            role: result.data.data.role,
+                            login: true
+                        })
+                        this.$router.push('admin')
+                    }
+                    else {
+                        this.$store.dispatch('common/setError', 'Email or Login is wrong')
+                    }
+                }
+            },
+            writeForm(){
+                this.$store.dispatch('common/clearError')
+            }
+        },
+        created() {
+            this.$store.dispatch('common/clearError')
         }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
     }
-  }
-}
 </script>
+<style>
+  .font_weight_bold {
+    font-family: 'Podkova';
+    font-weight: 800;
+  }
+</style>
+
+
