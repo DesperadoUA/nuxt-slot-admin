@@ -5,7 +5,7 @@
               @click="drawer = !drawer"
       ></v-app-bar-nav-icon>
       <v-toolbar-title>
-        <nuxt-link to="/admin" tag="span" class="pointer" >NetGame App</nuxt-link>
+        <nuxt-link to="/admin" tag="span" class="pointer" >NetGame</nuxt-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
@@ -29,25 +29,78 @@
     <v-navigation-drawer app temporary
                          v-model="drawer" class="grey darken-4" color="deep-orange darken-2">
       <v-container>
-        <v-layout class="justify-space-around mt-3 align-center">
-          <v-btn class="deep-orange darken-2 display_block justify-start" color="deep-orange darken-2 font-podkova-bold"
-                 @click="logout">
-            Logout
-          </v-btn>
-        </v-layout>
         <v-layout class="mt-5 mb-5" wrap>
           <v-btn
                   class="deep-orange darken-2 justify-start display_block mb-5 font-podkova-bold"
                   dark
                   exact
-                  to="/admin/domains">
-            Domains
+                  to="/admin">
+            <v-icon left color="white">mdi-bank</v-icon>
+            Main
           </v-btn>
           <v-btn
                   class="deep-orange darken-2 justify-start display_block mb-5 font-podkova-bold"
                   dark
-                  to="/admin/mails">
-            Mails
+                  exact
+                  to="/admin/category">
+            <v-icon left color="white">mdi-checkbox-multiple-blank</v-icon>
+            Category
+          </v-btn>
+          <v-btn
+                  class="deep-orange darken-2 justify-start display_block mb-5 font-podkova-bold"
+                  dark
+                  to="/admin/settings">
+            <v-icon left color="white">mdi-message-draw</v-icon>
+            Settings
+          </v-btn>
+          <v-btn
+                  class="deep-orange darken-2 justify-start display_block mb-5 font-podkova-bold"
+                  dark
+                  to="/admin/static-pages">
+            <v-icon left color="white">mdi-checkbox-multiple-blank</v-icon>
+            Static Pages
+          </v-btn>
+          <v-btn
+                  class="deep-orange darken-2 justify-start display_block mb-5 font-podkova-bold"
+                  dark
+                  to="/admin/options">
+            <v-icon left color="white">mdi-share-variant</v-icon>
+            Options
+          </v-btn>
+          <v-menu
+                  transition="slide-y-transition"
+                  bottom
+                  class="d-block"
+          >
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                      class="deep-orange darken-2 justify-start display_block font-podkova-bold"
+                      dark
+                      v-bind="attrs"
+                      v-on="on"
+              >
+                <v-icon left>mdi-folder-multiple-outline</v-icon>
+                Casino
+              </v-btn>
+            </template>
+            <v-list>
+              <v-list-item
+                      class="font-podkova-bold"
+                      v-for="(item, i) in casinoPage"
+                      :key="i" :to="item.link"
+              >
+                <v-list-item-title>
+                  {{ item.title }}
+                </v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>
+        </v-layout>
+        <v-layout class="justify-space-around mt-3 align-center">
+          <v-btn class="deep-orange darken-2 display_block justify-start" color="deep-orange darken-2 font-podkova-bold"
+                 @click="logout">
+            <v-icon left color="white">mdi-logout</v-icon>
+            Logout
           </v-btn>
         </v-layout>
       </v-container>
@@ -69,7 +122,11 @@
                     {title:'STATIC PAGES', url:'/admin/static-pages', icon:'mdi-checkbox-multiple-blank'},
                     {title:'OPTIONS', url:'/admin/options', icon:'mdi-share-variant'},
                     {title:'CASINO', url:'/admin/casino', icon:'mdi-checkbox-multiple-blank'},
-                ]
+                ],
+                casinoPage: [
+                    { title: 'All casino', link: '/admin/casino' },
+                    { title: 'Add casino', link: '/admin/casino/add' }
+                ],
             }
         },
         methods: {
