@@ -5,7 +5,9 @@
               @click="drawer = !drawer"
       ></v-app-bar-nav-icon>
       <v-toolbar-title>
-        <nuxt-link to="/admin" tag="span" class="pointer" >NetGame</nuxt-link>
+        <nuxt-link no-prefetch to="/admin" tag="span" class="pointer font-podkova-bold " >
+          NetGame
+        </nuxt-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
@@ -20,6 +22,7 @@
         <v-btn text exact
                class="font-podkova-bold"
                @click="logout"
+               no-prefetch
         >
           <v-icon left color="deep-orange darken-2">mdi-logout</v-icon>
           LOGOUT
@@ -34,6 +37,7 @@
                   class="deep-orange darken-2 justify-start display_block mb-5 font-podkova-bold"
                   dark
                   exact
+                  no-prefetch
                   to="/admin">
             <v-icon left color="white">mdi-bank</v-icon>
             Main
@@ -42,6 +46,7 @@
                   class="deep-orange darken-2 justify-start display_block mb-5 font-podkova-bold"
                   dark
                   exact
+                  no-prefetch
                   to="/admin/category">
             <v-icon left color="white">mdi-checkbox-multiple-blank</v-icon>
             Category
@@ -49,6 +54,7 @@
           <v-btn
                   class="deep-orange darken-2 justify-start display_block mb-5 font-podkova-bold"
                   dark
+                  no-prefetch
                   to="/admin/settings">
             <v-icon left color="white">mdi-message-draw</v-icon>
             Settings
@@ -56,6 +62,7 @@
           <v-btn
                   class="deep-orange darken-2 justify-start display_block mb-5 font-podkova-bold"
                   dark
+                  no-prefetch
                   to="/admin/static-pages">
             <v-icon left color="white">mdi-checkbox-multiple-blank</v-icon>
             Static Pages
@@ -63,6 +70,7 @@
           <v-btn
                   class="deep-orange darken-2 justify-start display_block mb-5 font-podkova-bold"
                   dark
+                  no-prefetch
                   to="/admin/options">
             <v-icon left color="white">mdi-share-variant</v-icon>
             Options
@@ -70,6 +78,7 @@
           <v-menu
                   transition="slide-y-transition"
                   bottom
+                  no-prefetch
                   class="d-block"
           >
             <template v-slot:activator="{ on, attrs }">
@@ -85,6 +94,7 @@
             </template>
             <v-list>
               <v-list-item
+                      no-prefetch
                       class="font-podkova-bold"
                       v-for="(item, i) in casinoPage"
                       :key="i" :to="item.link"
@@ -132,16 +142,9 @@
         methods: {
             async logout(){
                 const session = this.$store.getters['user/getUser'].session
-                const result = await DAL_Login.deleteSessionBySessionId(session)
-                if(result.data.confirm === 'ok') {
-                    this.$store.dispatch('user/setUser', {
-                        id: '',
-                        role: '',
-                        login: false,
-                        session: ''
-                    })
-                    this.$router.push('/')
-                }
+                await this.$store.dispatch('user/logout', session)
+                const user = this.$store.getters['user/getUser']
+                if(!user.login) this.$router.push('/')
             }
         },
     }

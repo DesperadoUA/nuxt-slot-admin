@@ -2,7 +2,6 @@ import DAL_Category from '../DAL/category'
 export const state = () => ({
     category: [],
 })
-
 export const mutations = {
     setCategory(state, data) {
         state.category = data
@@ -24,16 +23,15 @@ export const mutations = {
         state.category = newState
     }
 }
-
 export const actions = {
-    async getCategory({commit}, data){
+    async setCategory({commit}, data){
         const result = await DAL_Category.getCategory(data)
-        commit('setCategory', result.data.data)
+        if(result.data.confirm === 'ok') commit('setCategory', result.data.list)
     },
     async addCategory({commit}, data){
         const result = await DAL_Category.addCategory(data)
         const obj = {
-            id: result.data.data.insertId,
+            id: result.data.insertId,
             lang: data.lang,
             category_name: data.categoryName,
             post_type: data.post_type
@@ -49,7 +47,6 @@ export const actions = {
         commit('deleteCategory', data)
     }
 }
-
 export const getters = {
     getCategory(state) {
         return state.category

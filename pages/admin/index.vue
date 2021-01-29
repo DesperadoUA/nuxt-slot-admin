@@ -7,7 +7,7 @@
     export default {
         name: "index.vue",
         layout: 'admin',
-        components: [MainLoop]
+        components: {MainLoop}
     }
 </script>
 
