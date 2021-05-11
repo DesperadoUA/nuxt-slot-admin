@@ -22,7 +22,6 @@ export const mutations = {
 export const actions = {
     async setPages({commit}, data) {
         const result = await DAL_Settings.getPages(data)
-        console.log(result)
         if(result.data.confirm === 'ok') commit('setPages', result.data)
     },
     async setCurrentPage({commit}, data) {

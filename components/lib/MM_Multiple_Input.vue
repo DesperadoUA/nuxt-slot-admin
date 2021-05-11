@@ -7,6 +7,7 @@
             <v-expansion-panel-header >{{title}}</v-expansion-panel-header>
             <v-expansion-panel-content class="pt-4">
               <v-text-field v-for="(item, index) in value"
+                      :key="index"
                       prepend-icon="mdi-tooltip-edit"
                       type="text"
                       color="deep-orange darken-2"

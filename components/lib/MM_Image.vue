@@ -37,7 +37,8 @@
         props: ['value', 'title', 'action', 'action_key'],
         methods:{
             async selectFile(){
-              const file = this.$refs.file.files[0];
+              const file = this.$refs.file.files[0]
+              console.log(this.$refs.file.files)
               if(file) {
                   const reader = new FileReader();
                   reader.onloadend = async () => {
