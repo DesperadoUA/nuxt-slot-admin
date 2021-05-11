@@ -16,7 +16,7 @@ export const mutations = {
     }
 }
 export const actions = {
-    setUser({commit}, payload){
+    setUser({commit}, payload) {
         commit('setUser', payload)
     },
     async logout({commit}, payload){

@@ -33,7 +33,7 @@
         </v-col>
       </v-row>
       <v-row
-              v-for="post in data.posts"
+              v-for="post in data"
               :key="post.id"
               :class="[(post.status === '1') ? 'blue-grey darken-3 lighten-4 mb-2 align-center font-podkova-bold' : 'brown darken-2 mb-2 align-center font-podkova-bold']"
       >
@@ -43,14 +43,14 @@
         <v-col class="col-4 white--text" v-html="post.short_desc">
         </v-col>
         <v-col class="col-2 white--text">
-          {{post.data_change | sliceData}}
+          {{post.update_at | sliceData}}
         </v-col>
         <v-col class="col-1 white--text">
           {{post.status | public}}
         </v-col>
         <v-col class="col-2 text-right">
           <v-btn class="deep-orange darken-2"
-                 :to="`/admin/${data.post_slug}/${post.id}`"
+                 :to="`/admin/${post.slug}/${post.id}`"
           >Edit
             <v-icon dark
                     right>mdi-tooltip-edit</v-icon>
@@ -63,10 +63,10 @@
 <script>
     export default {
         name: "CategoryLoop",
-        props: ['data'],
+        props: ['data', 'slug'],
         filters: {
             public(data){
-                return data === '1' ? 'public': 'hide'
+                return data === 'public' ? 'public': 'hide'
             },
             sliceData(data) {
                 return data.slice(0, 10)

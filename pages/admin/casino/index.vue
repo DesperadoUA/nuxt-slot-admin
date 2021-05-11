@@ -1,9 +1,9 @@
 <template>
-  <div>
+   <div>
     <v-container class="container--fluid">
       <v-row>
         <v-col class="offset-1 col-10 mt-10">
-          <h1 class="page_title font-podkova-bold">Static Pages</h1>
+          <h1 class="page_title font-podkova-bold">Casino</h1>
         </v-col>
       </v-row>
       <v-row>
@@ -45,21 +45,21 @@
                     <div v-if="tab == 'tab-2'">
                       <CategoryLoop :data="postsUa" />
                       <TotalPosts :data="data.ua.total" />
-                      <MM_Paginations :length = "Math.ceil(data.ua.total/numnerPostOnPage)" 
-                                      :lang = "1"
-                                      :action = '"static_pages/setPaginationPage"'
+                      <MM_Paginations :length = "Math.ceil(data.ua.total/numnerPostOnPage)"
+                                      :lang = "2"
+                                      :action = '"casino/setPaginationPage"'
                                       :numberOnPage = "numnerPostOnPage"
-                                      :getterPage = "'static_pages/getPage'"
-                      />
+                                      :getterPage = "'casino/getPage'"
+                       />
                     </div>
                     <div v-else>
                       <CategoryLoop :data="postsRu" />
                       <TotalPosts :data="data.ru.total" />
                       <MM_Paginations :length = "Math.ceil(data.ru.total/numnerPostOnPage)" 
                                       :lang = "1"
-                                      :action = '"static_pages/setPaginationPage"'
+                                      :action = '"casino/setPaginationPage"'
                                       :numberOnPage = "numnerPostOnPage"
-                                      :getterPage = "'static_pages/getPage'"
+                                      :getterPage = "'casino/getPage'"
                       />
                     </div>
                   </v-card-text>
@@ -74,18 +74,18 @@
 </template>
 
 <script>
-  import CategoryLoop from '../../../components/templates/categoryLoop'
-  import TotalPosts from '../../../components/templates/totalPosts'
-  import MM_Paginations from '../../../components/lib/MM_Paginations'
+   import CategoryLoop from '../../../components/templates/categoryLoop'
+   import TotalPosts from '../../../components/templates/totalPosts'
+   import MM_Paginations from '../../../components/lib/MM_Paginations'
     export default {
-        name: "static_pages",
+        name: "casino",
         layout: 'admin',
         component: {CategoryLoop, TotalPosts, MM_Paginations},
         async mounted() {
             this.data.ru.posts = []
             this.data.ua.posts = []
             const user = this.$store.getters['user/getUser']
-            const page = this.$store.getters['static_pages/getPage']
+            const page = this.$store.getters['casino/getPage']
             const dataRu = {
                 session: user.session,
                 id: user.id,
@@ -93,8 +93,7 @@
                 limit: this.numnerPostOnPage,
                 offset: (page.ru - 1) * this.numnerPostOnPage
             }
-            await this.$store.dispatch('static_pages/setPages', dataRu)
-            
+            await this.$store.dispatch('casino/setCasino', dataRu)
             const dataUa = {
                 session: user.session,
                 id: user.id,
@@ -102,23 +101,27 @@
                 limit: this.numnerPostOnPage,
                 offset: (page.ua - 1) * this.numnerPostOnPage
             }
-            await this.$store.dispatch('static_pages/setPages', dataUa)
+            await this.$store.dispatch('casino/setCasino', dataUa)
+            const list = this.$store.getters['casino/getCasino']
+            this.data.ru.posts = list.ru
+            this.data.ua.posts = list.ua
 
-            const total = this.$store.getters['static_pages/getTotal']
+            const total = this.$store.getters['casino/getTotal']
             this.data.ru.total = total.ru
             this.data.ua.total = total.ua
+
         },
         data(){
           return {
               data: {
                   ru: {
-                      post_slug: 'static-pages',
+                      post_slug: 'casino',
                       lang: 'ru',
                       posts: [],
                       total: 0
                   },
                   ua: {
-                      post_slug: 'static-pages',
+                      post_slug: 'casino',
                       lang: 'ua',
                       posts: [],
                       total: 0
@@ -130,12 +133,12 @@
         },
         computed: {
           postsRu() {
-             const list = this.$store.getters['static_pages/getPages']
+             const list = this.$store.getters['casino/getCasino']
              this.data.ru.posts = list.ru
              return this.data.ru.posts
           },
           postsUa() {
-             const list = this.$store.getters['static_pages/getPages']
+             const list = this.$store.getters['casino/getCasino']
              this.data.ua.posts = list.ua
              return this.data.ua.posts
           }
@@ -143,13 +146,6 @@
     }
 </script>
 
-<style>
-.lang {
-  width: 20px;
-}
-.btn {
-  margin: 50px;
-  background: red;
-  padding: 15px 20px;
-}
+<style scoped>
+
 </style>

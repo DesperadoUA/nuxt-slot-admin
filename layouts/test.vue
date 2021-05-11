@@ -10,24 +10,15 @@
 <script>
     import AdminMenu from '../components/templates/adminMenu'
     export default {
-        name: "admin",
+        name: "test",
         components: {AdminMenu},
-        middleware: ['checkAuth']
     }
 </script>
 
 <style>
-  :root {
-    --orange: #FF3D00;
-    --white: #ffffff;
-  }
-
   body {
     background: #333;
   }
-  body .v-application .primary {
-    background: var(--orange)!important;
-  } 
   .color-orange {
     color: #FF3D00;
   }
@@ -51,7 +42,4 @@
   .pointer {
     cursor:pointer;
   }
-  .lang {
-    width: 20px;
-}
 </style>

@@ -1,9 +1,22 @@
 <template>
   <div>
-    <commonEditStaticPage v-if='data.body' 
-                     :data = "data.body"
-                     :action = '"static_pages/changeStateCurrentPage"'>
-    </commonEditStaticPage>
+      <v-container>
+      <v-row>
+        <v-col class="offset-1 col-10 mt-10">
+          <h1 class="page_title font-podkova-bold">{{data.title}}</h1>
+        </v-col>
+      </v-row>
+      <v-row>
+           <v-col class="mt-0">
+                    <MM_Image v-if = "data.editor === 'image'" 
+                                :value = 'data.value' 
+                                :title = 'data.title'
+                                :action = 'action'
+                                :action_key = '"value"' />
+
+           </v-col>
+      </v-row>
+    </v-container>
     <v-container>
         <v-row>
           <v-col class="offset-1 col-10 mt-5 mb-10">
@@ -25,43 +38,46 @@
 </template>
 
 <script>
-import commonEditStaticPage from '../../../components/templates/commonEditStaticPage'
+
 import snackeBar from '../../../components/templates/snackbar'
     export default {
-        name: "singleStaticPage",
+        name: "singleSettings",
         layout: 'admin',
-        components: {commonEditStaticPage, snackeBar},
+        components: {snackeBar},
         async mounted() {
+          this.data.title = 'Settings single page'
+          /*
             const user = this.$store.getters['user/getUser']
             const data = {
                 session: user.session,
                 id: user.id,
                 url: this.$route.params.id
             }
-            await this.$store.dispatch('static_pages/setCurrentPage', data)
-            this.data.body = this.$store.getters['static_pages/getCurrentPage']
+            await this.$store.dispatch('options/setCurrentPage', data)
+            this.data = this.$store.getters['options/getCurrentPage']
+            */
         },
         data(){
           return {
-              data:{
-                body: undefined,
-              },
+              data:{},
               snackbar: {
                   status: false,
-                  text: 'Post Update',
+                  text: 'Options Update',
                   timeout: 5000
-                }
+                },
+                action: 'settings/changeStateCurrentPage'
           }
         },
         methods: {
-          async update(){
+          async update() {
             const user = this.$store.getters['user/getUser']
             const data = {
                 session: user.session,
                 id: user.id,
-                data: this.$store.getters['static_pages/getCurrentPage']
+                data: this.$store.getters['settings/getCurrentPage']
             }
-            await this.$store.dispatch('static_pages/updateCurrentPage', data)
+    
+            await this.$store.dispatch('settings/updateCurrentPage', data)
             this.snackbar.status = true
             setTimeout(()=>{
               this.snackbar.status = false  

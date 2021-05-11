@@ -1,11 +1,19 @@
 import axios from 'axios'
-const API_URL = 'http://nuxt-slot-admin/admin/app/'
+import config from './config';
 class DAL_Login {
     static checkLogin(login, password) {
-        return axios.post(API_URL+'auth.php', {login, password})
+        return axios.post(config.API_URL+'login', 
+        {
+            login, 
+            password,  
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+              'Content-Type': 'application/json',
+            }
+        })
     }
     static deleteSessionBySessionId(session) {
-        return axios.post(API_URL+'logout.php', {session})
+        return axios.post(config.API_URL+'logout', {session})
     }
 }
 export default DAL_Login

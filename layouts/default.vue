@@ -17,7 +17,6 @@
                         type="email"
                         color="white"
                         v-model="email"
-                        :rules="emailRules"
                         @input="writeForm"
                 ></v-text-field>
                 <v-text-field
@@ -60,11 +59,6 @@
                 email: '',
                 password: '',
                 valid: false,
-                emailRules:
-                    [
-                        v => !!v || 'E-mail is required',
-                        v => !v || /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
-                    ],
                 passwordRules:
                     [
                         v => !!v || 'Password is required',
@@ -87,10 +81,11 @@
                     const email = this.email
                     const password = this.password
                     const result =  await DAL_Login.checkLogin(email, password)
+                   
                     if(result.data.confirm === 'ok') {
                         this.$store.dispatch('user/setUser', {
                             id: result.data.data.id,
-                            session: result.data.session,
+                            session: result.data.data.session,
                             role: result.data.data.role,
                             login: true
                         })

@@ -1,5 +1,9 @@
 export const state = () => ({
-    error: null
+    error: null,
+    lang: {
+        1: 'ru',
+        2: 'ua'
+    }
 })
 export const mutations = {
     setError(state, payload){
@@ -18,7 +22,10 @@ export const actions = {
     }
 }
 export const getters = {
-        error(state){
-            return state.error
-        }
+    error(state){
+      return state.error
+    },
+    lang(state) {
+        return state.lang
+    }
 }
