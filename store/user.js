@@ -20,7 +20,7 @@ export const actions = {
         commit('setUser', payload)
     },
     async logout({commit}, payload){
-        const result = await DAL_Login.deleteSessionBySessionId(payload)
+        const result = await DAL_Login.logout(payload)
         if(result.data.confirm === 'ok') {
             const defaultObj = {
                 id: '',

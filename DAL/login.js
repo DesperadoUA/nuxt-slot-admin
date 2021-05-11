@@ -12,8 +12,8 @@ class DAL_Login {
             }
         })
     }
-    static deleteSessionBySessionId(session) {
-        return axios.post(config.API_URL+'logout', {session})
+    static logout(id) {
+        return axios.post(config.API_URL+'logout', id)
     }
 }
 export default DAL_Login

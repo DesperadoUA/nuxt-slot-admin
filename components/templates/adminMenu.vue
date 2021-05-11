@@ -141,10 +141,14 @@
         },
         methods: {
             async logout(){
-                const session = this.$store.getters['user/getUser'].session
-                await this.$store.dispatch('user/logout', session)
                 const user = this.$store.getters['user/getUser']
-                if(!user.login) this.$router.push('/')
+                const data = {
+                  session: user.session,
+                  id: user.id,
+                }
+                await this.$store.dispatch('user/logout', data)
+                const currentUser = this.$store.getters['user/getUser']
+                if(!currentUser.login) this.$router.push('/')
             }
         },
     }
