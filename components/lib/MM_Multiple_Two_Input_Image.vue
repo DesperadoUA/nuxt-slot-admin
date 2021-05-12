@@ -6,10 +6,10 @@
           <v-expansion-panel>
             <v-expansion-panel-header >{{title}}</v-expansion-panel-header>
             <v-expansion-panel-content class="pt-4">
-              <v-container class="bb_orange" v-for="(item, index) in value" :key = "index">
+              <v-container class="bb_orange" v-for="(item, index) in currenData" :key = "index">
               <v-row class="pa-2 mb-2 slider_item_wrapper">
                 <div class="col-lg-3 col-xs-12">
-                  <img :src="value[index].src"
+                  <img :src="currenData[index].src"
                        class="mm_image margin_bottom_15"
                   >
                 </div>
@@ -26,14 +26,15 @@
                         prepend-icon = "mdi-tooltip-edit"
                         type = "text"
                         color = "deep-orange darken-2"
-                        v-model = "value[index].value_1"
-                        @change = "change"
+                        v-model = "currenData[index].value_1"
+                        @change = "change" 
                   ></v-text-field>
                   <v-text-field 
                         prepend-icon = "mdi-tooltip-edit"
                         type = "text"
                         color = "deep-orange darken-2"
-                        v-model = "value[index].value_2"
+                        v-model = "currenData[index].value_2"
+                        @change = "change"
                     ></v-text-field>
                   <v-btn
                       class="deep-orange darken-2 font-podkova-bold mt-5"
@@ -68,16 +69,28 @@
         props: ['value', 'title', 'action', 'action_key'],
         data(){
             return {
-                
+                currenData: []
             }
         },
         methods: {
             addItem(){
-                this.value.push({
-                  src: '',
-                  value_1: '',
-                  value_2: ''
-                })
+              this.currenData.push({
+                src: '',
+                value_1: '',
+                value_2: ''
+              })
+              const currenData = {
+                      key: this.action_key,
+                      value: this.currenData
+                    }
+              this.$store.dispatch(this.action, currenData)
+            },
+            change(){
+              const currenData = {
+                      key: this.action_key,
+                      value: this.currenData
+                    }
+             // this.$store.dispatch(this.action, currenData)
             },
             async selectFile(index){
               const file = this.$refs.file[index].files[0]
@@ -94,10 +107,10 @@
                         }
                     }
                     const result = await axios.post(config.API_URL+'admin/uploads', data)
-                    this.value[index].src = result.data.src
+                    this.currenData[index].src = result.data.src
                     const currenData = {
                       key: this.action_key,
-                      value: this.value
+                      value: this.currenData
                     }
                     this.$store.dispatch(this.action, currenData)    
                   }
@@ -105,14 +118,16 @@
               }
             },
             deleteItem(item){
-              this.value = this.value.filter(obj => obj !== item)
+              this.currenData = this.currenData.filter(obj => obj !== item)
               const currenData = {
                       key: this.action_key,
-                      value: this.value
+                      value: this.currenData
                     }
               this.$store.dispatch(this.action, currenData) 
-            }
-
+            },
+        },
+        mounted(){
+          this.currenData = this.value
         }
     }
 </script>

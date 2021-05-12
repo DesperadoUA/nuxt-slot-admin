@@ -1,54 +1,78 @@
 import DAL_Category from '../DAL/category'
 export const state = () => ({
-    category: [],
+    category: {
+        currentPage: {},
+        list: {
+            ru: [],
+            ua: []
+        },
+        page: {
+            ru: 1,
+            ua: 1
+        },
+        total: {
+            ru: 0,
+            ua: 0
+        }
+    }
 })
 export const mutations = {
     setCategory(state, data) {
-        state.category = data
+        state.category.list[data.lang] = data.body
+        state.category.total[data.lang] = data.total
     },
-    addCategory(state, data) {
-        state.category.push(data)
+    setCurrentPost(state, data) {
+        state.category.currentPage = data
     },
-    updateCategory(state, data) {
-        const newState = []
-        state.category.forEach(item => {
-            const obj = {...item}
-            if(item.id === data.id) obj.category_name = data.category_name
-            newState.push(obj)
-        })
-        state.category = newState
+    changeStateCurrentPost(state, data) {
+        state.category.currentPage[data.key] = data.value
     },
-    deleteCategory(state, data) {
-        const newState = state.category.filter(item => item.id !== data.id)
-        state.category = newState
+    setDeleteCurrentPost(state, data) {
+        state.category.confirmDelete = data
+    },
+    setPaginationPage(state, data) {
+        state.category.page[data.lang] = data.page
     }
+
 }
 export const actions = {
-    async setCategory({commit}, data){
+    async setCategory({commit}, data) {
         const result = await DAL_Category.getCategory(data)
-        if(result.data.confirm === 'ok') commit('setCategory', result.data.list)
+        if(result.data.confirm === 'ok') commit('setCategory', result.data)
     },
-    async addCategory({commit}, data){
-        const result = await DAL_Category.addCategory(data)
-        const obj = {
-            id: result.data.insertId,
-            lang: data.lang,
-            category_name: data.categoryName,
-            post_type: data.post_type
+    async setCurrentPost({commit}, data) {
+        const result = await DAL_Category.getCategoryById(data)
+        if(result.data.confirm === 'ok')  commit('setCurrentPost', result.data.body)
+    },
+    changeStateCurrentPost({commit}, data) {
+        commit('changeStateCurrentPost', data)
+    },
+    async setPaginationPage({commit}, data) {
+        const result = await DAL_Category.getCategory(data)
+        const pageData = {
+            lang: data.lang === 1 ? 'ru' : 'ua',
+            page: data.offset/data.limit + 1
         }
-        commit('addCategory', obj)
+        if(result.data.confirm === 'ok') {
+            commit('setCategory', result.data)
+            commit('setPaginationPage', pageData)
+        } 
     },
-    async updateCategory({commit}, data){
-        await DAL_Category.updateCategory(data)
-        commit('updateCategory', data)
-    },
-    async deleteCategory({commit}, data){
-        await DAL_Category.deleteCategory(data)
-        commit('deleteCategory', data)
+    async updateCurrentPost({commit}, data) {
+        const result = await DAL_Category.updateCategory(data)
     }
 }
 export const getters = {
-    getCategory(state) {
-        return state.category
+    getCategory(state){
+        return state.category.list
     },
+    getCurrentCategory(state) {
+      return state.category.currentPage
+    },
+    getPage(state) {
+        return state.category.page
+    },
+    getTotal(state) {
+        return state.category.total
+    }
 }
