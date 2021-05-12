@@ -56,9 +56,9 @@
                       <TotalPosts :data="data.ru.total" />
                       <MM_Paginations :length = "Math.ceil(data.ru.total/numnerPostOnPage)" 
                                       :lang = "1"
-                                      :action = '"casino/setPaginationPage"'
+                                      :action = '"category/setPaginationPage"'
                                       :numberOnPage = "numnerPostOnPage"
-                                      :getterPage = "'casino/getPage'"
+                                      :getterPage = "'category/getPage'"
                       />
                     </div>
                   </v-card-text>
@@ -80,11 +80,10 @@
         layout: 'admin',
         component: {CategoryLoop, TotalPosts, MM_Paginations},
         async mounted() {
-          /*
             this.data.ru.posts = []
             this.data.ua.posts = []
             const user = this.$store.getters['user/getUser']
-            const page = this.$store.getters['casino/getPage']
+            const page = this.$store.getters['category/getPage']
             const dataRu = {
                 session: user.session,
                 id: user.id,
@@ -92,7 +91,7 @@
                 limit: this.numnerPostOnPage,
                 offset: (page.ru - 1) * this.numnerPostOnPage
             }
-            await this.$store.dispatch('casino/setCasino', dataRu)
+            await this.$store.dispatch('category/setCategory', dataRu)
             const dataUa = {
                 session: user.session,
                 id: user.id,
@@ -100,15 +99,14 @@
                 limit: this.numnerPostOnPage,
                 offset: (page.ua - 1) * this.numnerPostOnPage
             }
-            await this.$store.dispatch('casino/setCasino', dataUa)
-            const list = this.$store.getters['casino/getCasino']
+            await this.$store.dispatch('category/setCategory', dataUa)
+            const list = this.$store.getters['category/getCategory']
             this.data.ru.posts = list.ru
             this.data.ua.posts = list.ua
 
-            const total = this.$store.getters['casino/getTotal']
+            const total = this.$store.getters['category/getTotal']
             this.data.ru.total = total.ru
             this.data.ua.total = total.ua
-*/
         },
         data(){
           return {
@@ -132,12 +130,12 @@
         },
         computed: {
           postsRu() {
-             const list = this.$store.getters['casino/getCasino']
+             const list = this.$store.getters['category/getCategory']
              this.data.ru.posts = list.ru
              return this.data.ru.posts
           },
           postsUa() {
-             const list = this.$store.getters['casino/getCasino']
+             const list = this.$store.getters['category/getCategory']
              this.data.ua.posts = list.ua
              return this.data.ua.posts
           }
