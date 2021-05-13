@@ -19,17 +19,17 @@
 
               <v-tab href="#tab-1" >
                 Ru <img
-                      lazy-src="http://nuxt-slot-admin/admin/img/ru.jpg"
+                      lazy-src="http://nuxt-slot-admin/img/ru.jpg"
                       class="lang"
-                      src="http://nuxt-slot-admin/admin/img/ru.jpg"
+                      src="http://nuxt-slot-admin/img/ru.jpg"
               >
               </v-tab>
               <v-tab href="#tab-2" >
                 Ua
                 <img
-                        lazy-src="http://nuxt-slot-admin/admin/img/ua.jpg"
+                        lazy-src="http://nuxt-slot-admin/img/ua.jpg"
                         class="lang"
-                        src="http://nuxt-slot-admin/admin/img/ua.jpg"
+                        src="http://nuxt-slot-admin/img/ua.jpg"
                 >
               </v-tab>
             </v-tabs>

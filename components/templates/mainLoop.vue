@@ -49,11 +49,11 @@
         data(){
             return {
                 cards: [
-                    {title: 'Static Pages', thumbnail: 'http://nuxt-slot-admin/admin/img/static-page.jpg', link: '/admin/static-pages'},
-                    {title: 'Casino', thumbnail: 'http://nuxt-slot-admin/admin/img/casino.png', link: '/admin/casino'},
-                    {title: 'Category', thumbnail: 'http://nuxt-slot-admin/admin/img/category.png', link: '/admin/category'},
-                    {title: 'Settings', thumbnail: 'http://nuxt-slot-admin/admin/img/settings.jpg', link: '/admin/settings'},
-                    {title: 'Options', thumbnail: 'http://nuxt-slot-admin/admin/img/options.jpg', link: '/admin/options'},
+                    {title: 'Static Pages', thumbnail: 'http://nuxt-slot-admin/img/static-page.jpg', link: '/admin/static-pages'},
+                    {title: 'Casino', thumbnail: 'http://nuxt-slot-admin/img/casino.png', link: '/admin/casino'},
+                    {title: 'Category', thumbnail: 'http://nuxt-slot-admin/img/category.png', link: '/admin/category'},
+                    {title: 'Settings', thumbnail: 'http://nuxt-slot-admin/img/settings.jpg', link: '/admin/settings'},
+                    {title: 'Options', thumbnail: 'http://nuxt-slot-admin/img/options.jpg', link: '/admin/options'},
                 ]
             }
         },
