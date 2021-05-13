@@ -28,6 +28,11 @@
                         :title = 'data.title'
                         :action = 'action'
                         :action_key = '"value"' />
+              <MM_Multiple_Input_Text v-if = "data.editor === 'input_text'" 
+                        :value = 'data.value' 
+                        :title = 'data.title'
+                        :action = 'action'
+                        :action_key = '"value"' />
            </v-col>
       </v-row>
     </v-container>
@@ -57,6 +62,7 @@ import MM_Image from '../../../components/lib/MM_Image'
 import MM_Input from '../../../components/lib/MM_Input'
 import MM_Rich_Text from '../../../components/lib/MM_Rich_Text'
 import MM_Multiple_Two_Input_Image from '../../../components/lib/MM_Multiple_Two_Input_Image'
+import MM_Multiple_Input_Text from '../../../components/lib/MM_Multiple_Input_Text'
     export default {
         name: "singleSettings",
         layout: 'admin',
@@ -78,7 +84,7 @@ import MM_Multiple_Two_Input_Image from '../../../components/lib/MM_Multiple_Two
               data:{},
               snackbar: {
                   status: false,
-                  text: 'Options Update',
+                  text: 'Settings Update',
                   timeout: 5000
                 },
               action: 'settings/changeStateCurrentPage'

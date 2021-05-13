@@ -6,7 +6,7 @@
           <v-expansion-panel>
             <v-expansion-panel-header >{{title}}</v-expansion-panel-header>
             <v-expansion-panel-content class="pt-4">
-              <v-row v-for="(item, index) in value">
+              <v-row v-for="(item, index) in value" :key="index">
                 <v-col class="col-6">
                   <v-text-field
                                 prepend-icon="mdi-tooltip-edit"

@@ -2,12 +2,7 @@
     <v-container>
         <v-row>
             <v-col class="mt-0">
-            <MM_Relative_Posts 
-                    :value = 'data.relative_category'
-                    :action = 'action' 
-                    :title = '"Relative category"' 
-                    :action_key = '"parent_id"'
-                    />
+                Casino Meta
             </v-col>
         </v-row>
     </v-container>
@@ -16,7 +11,7 @@
 <script>
     import MM_Relative_Posts from '../../components/lib/MM_Relative_Posts'
     export default {
-        name: "adminCategoryRelative",
+        name: "casinoMeta",
         props: ['data', 'action'],
         components: {MM_Relative_Posts},
         data() {

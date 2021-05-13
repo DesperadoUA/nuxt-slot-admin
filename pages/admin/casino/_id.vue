@@ -4,6 +4,9 @@
                      :data = "data.body"
                      :action = '"casino/changeStateCurrentPost"'>
     </commonEdit> 
+    <casinoMeta >
+      
+    </casinoMeta>
     <v-container>
         <v-row>
           <v-col class="offset-1 col-10 mt-5 mb-10">
@@ -35,11 +38,12 @@
 
 <script>
 import commonEdit from '../../../components/templates/commonEdit.vue'
+import casinoMeta from '../../../components/templates/adminCasinoMeta'
 import snackeBar from '../../../components/templates/snackbar'
     export default {
         name: "singleCasinoPage",
         layout: 'admin',
-        components: {commonEdit, snackeBar},
+        components: {commonEdit, casinoMeta, snackeBar},
         async mounted() {
             const user = this.$store.getters['user/getUser']
             const data = {
