@@ -4,8 +4,9 @@
                      :data = "data.body"
                      :action = '"casino/changeStateCurrentPost"'>
     </commonEdit> 
-    <casinoMeta >
-      
+    <casinoMeta v-if='data.body' 
+                     :data = "data.body"
+                     :action = '"casino/changeStateCurrentPost"'>
     </casinoMeta>
     <v-container>
         <v-row>

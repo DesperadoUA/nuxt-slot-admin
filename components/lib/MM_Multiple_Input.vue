@@ -6,13 +6,21 @@
           <v-expansion-panel>
             <v-expansion-panel-header >{{title}}</v-expansion-panel-header>
             <v-expansion-panel-content class="pt-4">
-              <v-text-field v-for="(item, index) in value"
-                      :key="index"
-                      prepend-icon="mdi-tooltip-edit"
-                      type="text"
-                      color="deep-orange darken-2"
-                      v-model="value[index]"
-              ></v-text-field>
+              <v-col class="col-12 text-right" v-for="(item, index) in currenData"
+                          :key="index">
+                  <v-text-field prepend-icon="mdi-tooltip-edit"
+                          type="text"
+                          color="deep-orange darken-2"
+                          v-model="currenData[index]"
+                  ></v-text-field>
+                  <v-btn
+                      class="deep-orange darken-2 font-podkova-bold"
+                      @click="deleteItem(index)"
+                  >
+                  <v-icon left>mdi-delete</v-icon>
+                  Delete
+                  </v-btn>
+              </v-col>
               <v-btn
                       class="deep-orange darken-2 font-podkova-bold"
                       @click="addItem"
@@ -31,16 +39,39 @@
 <script>
     export default {
         name: "MM_Multiple_Input",
+        props: ['value', 'title', 'action', 'action_key'],
         data(){
             return {
-                title: 'Multiple Input',
-                value: ['Value 1', 'Value_2', 'Value_3', "Value_4"]
+                currenData: []
             }
         },
         methods: {
             addItem(){
-                this.value.push('')
-            }
+              this.currenData.push('')
+              const currenData = {
+                      key: this.action_key,
+                      value: this.currenData
+                    }
+              this.$store.dispatch(this.action, currenData)
+            },
+            change(){
+              const currenData = {
+                      key: this.action_key,
+                      value: this.currenData
+                    }
+              this.$store.dispatch(this.action, currenData)
+            },
+            deleteItem(index) {
+              this.currenData.splice(index, 1)
+              const currenData = {
+                      key: this.action_key,
+                      value: this.currenData
+                    }
+              this.$store.dispatch(this.action, currenData) 
+            },
+        },
+        mounted(){
+          this.currenData = this.value
         }
     }
 </script>
