@@ -90,7 +90,7 @@
                       key: this.action_key,
                       value: this.currenData
                     }
-             // this.$store.dispatch(this.action, currenData)
+              this.$store.dispatch(this.action, currenData)
             },
             async selectFile(index){
               const file = this.$refs.file[index].files[0]

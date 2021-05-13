@@ -46,9 +46,9 @@
                       <TotalPosts :data="data.ua.total" />
                       <MM_Paginations :length = "Math.ceil(data.ua.total/numnerPostOnPage)"
                                       :lang = "2"
-                                      :action = '"casino/setPaginationPage"'
+                                      :action = '"category/setPaginationPage"'
                                       :numberOnPage = "numnerPostOnPage"
-                                      :getterPage = "'casino/getPage'"
+                                      :getterPage = "'category/getPage'"
                        />
                     </div>
                     <div v-else>

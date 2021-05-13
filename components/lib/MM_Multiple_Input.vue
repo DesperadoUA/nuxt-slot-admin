@@ -40,7 +40,6 @@
         methods: {
             addItem(){
                 this.value.push('')
-                console.log(this.value)
             }
         }
     }

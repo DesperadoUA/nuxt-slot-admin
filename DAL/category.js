@@ -10,11 +10,8 @@ class DAL_Category {
     static deleteCategory(data) {
         return axios.post(config.API_URL + 'admin/category/delete', data)
     }
-    static addCategory(data) {
-        return axios.post(config.API_URL + 'admin/store', data)
-    }
     static updateCategory(data) {
-        return axios.post(config.API_URL + 'admin/store/update', data)
+        return axios.post(config.API_URL + 'admin/category/update', data)
     }
 }
 export default DAL_Category
