@@ -10,8 +10,9 @@
                 <v-sheet>
                   <v-switch
                           color="deep-orange darken-2"
-                          v-model="value"
+                          v-model="currenData"
                           inset
+                          @change="change"
                   ></v-switch>
                 </v-sheet>
               </v-row>
@@ -26,10 +27,23 @@
 <script>
     export default {
         name: "MM_Checkbox",
+        props: ['value', 'title', 'action', 'action_key'],
         data () {
             return {
-                value: true,
-                title: 'Public'
+                currenData: true
+            }
+        },
+        mounted() {
+          this.currenData = this.value === 1 ? true : false 
+          console.log(this.currenData)
+        },
+        methods: {
+            change(){
+              const currenData = {
+                      key: this.action_key,
+                      value: this.currenData
+                    }
+              this.$store.dispatch(this.action, currenData)
             }
         },
     }
