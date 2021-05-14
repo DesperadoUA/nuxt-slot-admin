@@ -51,6 +51,11 @@
                 cards: [
                     {title: 'Static Pages', thumbnail: 'http://nuxt-slot-admin/img/static-page.jpg', link: '/admin/static-pages'},
                     {title: 'Casino', thumbnail: 'http://nuxt-slot-admin/img/casino.png', link: '/admin/casino'},
+                    {title: 'Blog', thumbnail: 'http://nuxt-slot-admin/img/options.jpg', link: '/admin/blog'},
+                    {title: 'Vendors', thumbnail: 'http://nuxt-slot-admin/img/options.jpg', link: '/admin/vendors'},
+                    {title: 'Slots', thumbnail: 'http://nuxt-slot-admin/img/options.jpg', link: '/admin/slots'},
+                    {title: 'Payments', thumbnail: 'http://nuxt-slot-admin/img/options.jpg', link: '/admin/payments'},
+                    {title: 'Bonuses', thumbnail: 'http://nuxt-slot-admin/img/options.jpg', link: '/admin/bonuses'},
                     {title: 'Category', thumbnail: 'http://nuxt-slot-admin/img/category.png', link: '/admin/category'},
                     {title: 'Settings', thumbnail: 'http://nuxt-slot-admin/img/settings.jpg', link: '/admin/settings'},
                     {title: 'Options', thumbnail: 'http://nuxt-slot-admin/img/options.jpg', link: '/admin/options'},

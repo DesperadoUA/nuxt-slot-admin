@@ -105,6 +105,156 @@
               </v-list-item>
             </v-list>
           </v-menu>
+          <v-menu
+                  transition="slide-y-transition"
+                  bottom
+                  no-prefetch
+                  class="d-block"
+          >
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                      class="deep-orange mt-5 darken-2 justify-start display_block font-podkova-bold"
+                      dark
+                      v-bind="attrs"
+                      v-on="on"
+              >
+                <v-icon left>mdi-folder-multiple-outline</v-icon>
+                Blog
+              </v-btn>
+            </template>
+            <v-list>
+              <v-list-item
+                      no-prefetch
+                      class="font-podkova-bold"
+                      v-for="(item, i) in blogPage"
+                      :key="i" :to="item.link"
+              >
+                <v-list-item-title>
+                  {{ item.title }}
+                </v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>
+          <v-menu
+                  transition="slide-y-transition"
+                  bottom
+                  no-prefetch
+                  class="d-block"
+          >
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                      class="deep-orange mt-5 darken-2 justify-start display_block font-podkova-bold"
+                      dark
+                      v-bind="attrs"
+                      v-on="on"
+              >
+                <v-icon left>mdi-folder-multiple-outline</v-icon>
+                Vendors
+              </v-btn>
+            </template>
+            <v-list>
+              <v-list-item
+                      no-prefetch
+                      class="font-podkova-bold"
+                      v-for="(item, i) in vendorsPage"
+                      :key="i" :to="item.link"
+              >
+                <v-list-item-title>
+                  {{ item.title }}
+                </v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>
+          <v-menu
+                  transition="slide-y-transition"
+                  bottom
+                  no-prefetch
+                  class="d-block"
+          >
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                      class="deep-orange mt-5 darken-2 justify-start display_block font-podkova-bold"
+                      dark
+                      v-bind="attrs"
+                      v-on="on"
+              >
+                <v-icon left>mdi-folder-multiple-outline</v-icon>
+                Payments
+              </v-btn>
+            </template>
+            <v-list>
+              <v-list-item
+                      no-prefetch
+                      class="font-podkova-bold"
+                      v-for="(item, i) in paymentsPage"
+                      :key="i" :to="item.link"
+              >
+                <v-list-item-title>
+                  {{ item.title }}
+                </v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>
+          <v-menu
+                  transition="slide-y-transition"
+                  bottom
+                  no-prefetch
+                  class="d-block"
+          >
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                      class="deep-orange mt-5 darken-2 justify-start display_block font-podkova-bold"
+                      dark
+                      v-bind="attrs"
+                      v-on="on"
+              >
+                <v-icon left>mdi-folder-multiple-outline</v-icon>
+                Slots
+              </v-btn>
+            </template>
+            <v-list>
+              <v-list-item
+                      no-prefetch
+                      class="font-podkova-bold"
+                      v-for="(item, i) in slotsPage"
+                      :key="i" :to="item.link"
+              >
+                <v-list-item-title>
+                  {{ item.title }}
+                </v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>
+          <v-menu
+                  transition="slide-y-transition"
+                  bottom
+                  no-prefetch
+                  class="d-block"
+          >
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                      class="deep-orange mt-5 darken-2 justify-start display_block font-podkova-bold"
+                      dark
+                      v-bind="attrs"
+                      v-on="on"
+              >
+                <v-icon left>mdi-folder-multiple-outline</v-icon>
+                Bonuses
+              </v-btn>
+            </template>
+            <v-list>
+              <v-list-item
+                      no-prefetch
+                      class="font-podkova-bold"
+                      v-for="(item, i) in bonusesPage"
+                      :key="i" :to="item.link"
+              >
+                <v-list-item-title>
+                  {{ item.title }}
+                </v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>
         </v-layout>
         <v-layout class="justify-space-around mt-3 align-center">
           <v-btn class="deep-orange darken-2 display_block justify-start" color="deep-orange darken-2 font-podkova-bold"
@@ -119,7 +269,6 @@
 </template>
 
 <script>
-    import DAL_Login from '../../DAL/login'
     export default {
         name: "AdminMenu",
         data(){
@@ -131,11 +280,36 @@
                     {title:'SETTINGS', url:'/admin/settings', icon:'mdi-message-draw'},
                     {title:'STATIC PAGES', url:'/admin/static-pages', icon:'mdi-checkbox-multiple-blank'},
                     {title:'OPTIONS', url:'/admin/options', icon:'mdi-share-variant'},
-                    {title:'CASINO', url:'/admin/casino', icon:'mdi-checkbox-multiple-blank'},
+                    {title:'CASINO', url:'/admin/casino', icon:'mdi-cash-usd'},
+                    {title:'BLOG', url:'/admin/blog', icon:'mdi-blogger'},
+                    {title:'VENDORS', url:'/admin/vendors', icon:'mdi-android-studio'},
+                    {title:'PAYMENTS', url:'/admin/payments', icon:'mdi-cash'},
+                    {title:'SLOTS', url:'/admin/slots', icon:'mdi-gamepad-variant'},
+                    {title:'BONUSES', url:'/admin/bonuses', icon:'mdi-cake'},
                 ],
                 casinoPage: [
                     { title: 'All casino', link: '/admin/casino' },
                     { title: 'Add casino', link: '/admin/casino/add' }
+                ],
+                blogPage: [
+                    { title: 'All blog', link: '/admin/blog' },
+                    { title: 'Add blog', link: '/admin/blog/add' }
+                ],
+                vendorsPage: [
+                    { title: 'All vendors', link: '/admin/vendors' },
+                    { title: 'Add vendors', link: '/admin/vendors/add' }
+                ],
+                paymentsPage: [
+                    { title: 'All payments', link: '/admin/payments' },
+                    { title: 'Add payments', link: '/admin/payments/add' }
+                ],
+                slotsPage: [
+                    { title: 'All slots', link: '/admin/slots' },
+                    { title: 'Add slots', link: '/admin/slots/add' }
+                ],
+                bonusesPage: [
+                    { title: 'All bonuses', link: '/admin/bonuses' },
+                    { title: 'Add bonus', link: '/admin/bonuses/add' }
                 ],
             }
         },
