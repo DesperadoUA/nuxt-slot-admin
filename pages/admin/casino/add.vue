@@ -2,7 +2,7 @@
   <div>
    <commonAdd   v-if = 'data.body' 
                 :data = "data.body"
-                :action = '"casino/changeStateNewPost"'></commonAdd>
+                :action = 'POST_TYPE + "/changeStateNewPost"'></commonAdd>
     <v-container>
         <v-row>
           <v-col class="offset-1 col-10 mt-5 mb-10">
@@ -43,13 +43,14 @@ import commonAdd from '../../../components/templates/commonAdd.vue'
                create_at: new Date().toJSON().slice(0,10),
                thumbnail: ''
            }
-           this.$store.dispatch('casino/setNewPost', this.data.body)
+           this.$store.dispatch(this.POST_TYPE + '/setNewPost', this.data.body)
         },
         data(){
           return {
               data:{
                 body: undefined
-              }
+              },
+              POST_TYPE: 'casino'
           }
         },
         methods: {
@@ -58,12 +59,12 @@ import commonAdd from '../../../components/templates/commonAdd.vue'
             const data = {
                 session: user.session,
                 id: user.id,
-                data: this.$store.getters['casino/getNewPost']
+                data: this.$store.getters[this.POST_TYPE + '/getNewPost']
             }
             if(data.data.title !== '') {
-                await this.$store.dispatch('casino/addNewPost', data)
-                const insertId = this.$store.getters['casino/getInsertId']
-                if(insertId !== '') this.$router.push(`/admin/casino/${insertId}`)
+                await this.$store.dispatch(this.POST_TYPE + '/addNewPost', data)
+                const insertId = this.$store.getters[this.POST_TYPE + '/getInsertId']
+                if(insertId !== '') this.$router.push(`/admin/${this.POST_TYPE}/${insertId}`)
             } 
             else {
                 alert('Title empty')

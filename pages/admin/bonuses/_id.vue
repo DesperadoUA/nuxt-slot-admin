@@ -91,7 +91,7 @@ import snackeBar from '../../../components/templates/snackbar'
               }
               await this.$store.dispatch(this.POST_TYPE + '/deleteCurrentPost', data)
               const confirmDelete = this.$store.getters[this.POST_TYPE + '/getConfirmDelete']
-              if(confirmDelete) this.$router.push(`/admin/ + this.POST_TYPE`)
+              if(confirmDelete) this.$router.push('/admin/' + this.POST_TYPE)
           }
         }
     }

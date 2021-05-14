@@ -47,9 +47,9 @@
                       <TotalPosts :data="data.ua.total" />
                       <MM_Paginations :length = "Math.ceil(data.ua.total/numnerPostOnPage)"
                                       :lang = "2"
-                                      :action = '"casino/setPaginationPage"'
+                                      :action = 'POST_TYPE + "/setPaginationPage"'
                                       :numberOnPage = "numnerPostOnPage"
-                                      :getterPage = "'casino/getPage'"
+                                      :getterPage = "POST_TYPE + '/getPage'"
                        />
                     </div>
                     <div v-else>
@@ -57,9 +57,9 @@
                       <TotalPosts :data="data.ru.total" />
                       <MM_Paginations :length = "Math.ceil(data.ru.total/numnerPostOnPage)" 
                                       :lang = "1"
-                                      :action = '"casino/setPaginationPage"'
+                                      :action = 'POST_TYPE + "/setPaginationPage"'
                                       :numberOnPage = "numnerPostOnPage"
-                                      :getterPage = "'casino/getPage'"
+                                      :getterPage = "POST_TYPE + '/getPage'"
                       />
                     </div>
                   </v-card-text>
@@ -85,7 +85,7 @@
             this.data.ru.posts = []
             this.data.ua.posts = []
             const user = this.$store.getters['user/getUser']
-            const page = this.$store.getters['casino/getPage']
+            const page = this.$store.getters[this.POST_TYPE + '/getPage']
             const dataRu = {
                 session: user.session,
                 id: user.id,
@@ -93,7 +93,7 @@
                 limit: this.numnerPostOnPage,
                 offset: (page.ru - 1) * this.numnerPostOnPage
             }
-            await this.$store.dispatch('casino/setCasino', dataRu)
+            await this.$store.dispatch(this.POST_TYPE + '/setPosts', dataRu)
             const dataUa = {
                 session: user.session,
                 id: user.id,
@@ -101,18 +101,19 @@
                 limit: this.numnerPostOnPage,
                 offset: (page.ua - 1) * this.numnerPostOnPage
             }
-            await this.$store.dispatch('casino/setCasino', dataUa)
-            const list = this.$store.getters['casino/getCasino']
+            await this.$store.dispatch(this.POST_TYPE + '/setPosts', dataUa)
+            const list = this.$store.getters[this.POST_TYPE + '/getPosts']
             this.data.ru.posts = list.ru
             this.data.ua.posts = list.ua
 
-            const total = this.$store.getters['casino/getTotal']
+            const total = this.$store.getters[this.POST_TYPE + '/getTotal']
             this.data.ru.total = total.ru
             this.data.ua.total = total.ua
 
         },
         data(){
           return {
+              POST_TYPE: 'casino',
               data: {
                   ru: {
                       post_slug: 'casino',
@@ -133,12 +134,12 @@
         },
         computed: {
           postsRu() {
-             const list = this.$store.getters['casino/getCasino']
+             const list = this.$store.getters[this.POST_TYPE + '/getPosts']
              this.data.ru.posts = list.ru
              return this.data.ru.posts
           },
           postsUa() {
-             const list = this.$store.getters['casino/getCasino']
+             const list = this.$store.getters[this.POST_TYPE + '/getPosts']
              this.data.ua.posts = list.ua
              return this.data.ua.posts
           }

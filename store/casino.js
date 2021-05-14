@@ -1,6 +1,7 @@
-import DAL_Casino from '../DAL/casino'
+import DAL from '../DAL/casino'
+const POST_TYPE = 'casino'
 export const state = () => ({
-    casino: {
+    [POST_TYPE]: {
         currentPage: {},
         list: {
             ru: [],
@@ -20,40 +21,40 @@ export const state = () => ({
     }
 })
 export const mutations = {
-    setCasino(state, data) {
-        state.casino.list[data.lang] = data.body
-        state.casino.total[data.lang] = data.total
+    setPosts(state, data) {
+        state[POST_TYPE].list[data.lang] = data.body
+        state[POST_TYPE].total[data.lang] = data.total
     },
     setCurrentPost(state, data) {
-        state.casino.currentPage = data
+        state[POST_TYPE].currentPage = data
     },
     changeStateCurrentPost(state, data) {
-        state.casino.currentPage[data.key] = data.value
+        state[POST_TYPE].currentPage[data.key] = data.value
     },
     changeStateNewPost(state, data) {
-        state.casino.newPost[data.key] = data.value
+        state[POST_TYPE].newPost[data.key] = data.value
     },
     setNewPost(state, data) {
-        state.casino.newPost = data
+        state[POST_TYPE].newPost = data
     },
     setInsert(state, data) {
-        state.casino.insert_id = data
+        state[POST_TYPE].insert_id = data
     },
     setDeleteCurrentPost(state, data) {
-        state.casino.confirmDelete = data
+        state[POST_TYPE].confirmDelete = data
     },
     setPaginationPage(state, data) {
-        state.casino.page[data.lang] = data.page
+        state[POST_TYPE].page[data.lang] = data.page
     }
 
 }
 export const actions = {
-    async setCasino({commit}, data) {
-        const result = await DAL_Casino.getPosts(data)
-        if(result.data.confirm === 'ok') commit('setCasino', result.data)
+    async setPosts({commit}, data) {
+        const result = await DAL.getPosts(data)
+        if(result.data.confirm === 'ok') commit('setPosts', result.data)
     },
     async setCurrentPost({commit}, data) {
-        const result = await DAL_Casino.getPostById(data)
+        const result = await DAL.getPostById(data)
         if(result.data.confirm === 'ok')  commit('setCurrentPost', result.data.body)
     },
     changeStateCurrentPost({commit}, data) {
@@ -66,52 +67,52 @@ export const actions = {
         commit('setNewPost', data)
     },
     async setPaginationPage({commit}, data) {
-        const result = await DAL_Casino.getPosts(data)
+        const result = await DAL.getPosts(data)
         const pageData = {
             lang: data.lang === 1 ? 'ru' : 'ua',
             page: data.offset/data.limit + 1
         }
         if(result.data.confirm === 'ok') {
-            commit('setCasino', result.data)
+            commit('setPosts', result.data)
             commit('setPaginationPage', pageData)
         } 
     },
     async updateCurrentPost({commit}, data) {
-        const result = await DAL_Casino.updatePost(data)
+        const result = await DAL.updatePost(data)
     },
     async addNewPost({commit}, data) {
-        const result = await DAL_Casino.add(data)
+        const result = await DAL.add(data)
         if(result.data.confirm === 'ok') {
             commit('setInsert', result.data.insert_id)
         }
     },
     async deleteCurrentPost({commit}, data) {
-        const result = await DAL_Casino.delete(data)
+        const result = await DAL.delete(data)
         if(result.data.confirm === 'ok') {
             commit('setDeleteCurrentPost', true)
         }
     }
 }
 export const getters = {
-    getCasino(state){
-        return state.casino.list
+    getPosts(state){
+        return state[POST_TYPE].list
     },
-    getCurrentCasino(state) {
-      return state.casino.currentPage
+    getCurrentPost(state) {
+      return state[POST_TYPE].currentPage
     },
     getNewPost(state) {
-        return state.casino.newPost
+        return state[POST_TYPE].newPost
     },
     getInsertId(state) {
-        return state.casino.insert_id
+        return state[POST_TYPE].insert_id
     },
     getConfirmDelete(state) {
-        return state.casino.confirmDelete
+        return state[POST_TYPE].confirmDelete
     },
     getPage(state) {
-        return state.casino.page
+        return state[POST_TYPE].page
     },
     getTotal(state) {
-        return state.casino.total
+        return state[POST_TYPE].total
     }
 }

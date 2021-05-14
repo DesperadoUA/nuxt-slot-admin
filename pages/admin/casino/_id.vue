@@ -2,12 +2,12 @@
   <div>
     <commonEdit v-if='data.body' 
                      :data = "data.body"
-                     :action = '"casino/changeStateCurrentPost"'>
+                     :action = 'POST_TYPE + "/changeStateCurrentPost"'>
     </commonEdit> 
-    <casinoMeta v-if='data.body' 
+    <postMeta v-if='data.body' 
                      :data = "data.body"
-                     :action = '"casino/changeStateCurrentPost"'>
-    </casinoMeta>
+                     :action = 'POST_TYPE + "/changeStateCurrentPost"'>
+    </postMeta>
     <v-container>
         <v-row>
           <v-col class="offset-1 col-10 mt-5 mb-10">
@@ -39,12 +39,12 @@
 
 <script>
 import commonEdit from '../../../components/templates/commonEdit.vue'
-import casinoMeta from '../../../components/templates/adminCasinoMeta'
+import postMeta from '../../../components/templates/adminCasinoMeta'
 import snackeBar from '../../../components/templates/snackbar'
     export default {
         name: "singleCasinoPage",
         layout: 'admin',
-        components: {commonEdit, casinoMeta, snackeBar},
+        components: {commonEdit, postMeta, snackeBar},
         async mounted() {
             const user = this.$store.getters['user/getUser']
             const data = {
@@ -52,11 +52,12 @@ import snackeBar from '../../../components/templates/snackbar'
                 id: user.id,
                 url: this.$route.params.id
             }
-            await this.$store.dispatch('casino/setCurrentPost', data)
-            this.data.body = this.$store.getters['casino/getCurrentCasino']
+            await this.$store.dispatch(this.POST_TYPE + '/setCurrentPost', data)
+            this.data.body = this.$store.getters[this.POST_TYPE + '/getCurrentPost']
         },
         data(){
           return {
+              POST_TYPE: 'casino',
               data:{
                 body: undefined
               },
@@ -73,9 +74,9 @@ import snackeBar from '../../../components/templates/snackbar'
             const data = {
                 session: user.session,
                 id: user.id,
-                data: this.$store.getters['casino/getCurrentCasino']
+                data: this.$store.getters[this.POST_TYPE + '/getCurrentPost']
             }
-            await this.$store.dispatch('casino/updateCurrentPost', data)
+            await this.$store.dispatch(this.POST_TYPE + '/updateCurrentPost', data)
             this.snackbar.status = true
             setTimeout(()=>{
               this.snackbar.status = false  
@@ -88,9 +89,9 @@ import snackeBar from '../../../components/templates/snackbar'
                   id: user.id,
                   data: this.$route.params.id
               }
-              await this.$store.dispatch('casino/deleteCurrentPost', data)
-              const confirmDelete = this.$store.getters['casino/getConfirmDelete']
-              if(confirmDelete) this.$router.push(`/admin/casino`)
+              await this.$store.dispatch(this.POST_TYPE + '/deleteCurrentPost', data)
+              const confirmDelete = this.$store.getters[this.POST_TYPE + '/getConfirmDelete']
+              if(confirmDelete) this.$router.push('/admin/' + this.POST_TYPE)
           }
         }
     }

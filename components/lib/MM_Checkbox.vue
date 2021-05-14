@@ -35,7 +35,6 @@
         },
         mounted() {
           this.currenData = this.value === 1 ? true : false 
-          console.log(this.currenData)
         },
         methods: {
             change(){
