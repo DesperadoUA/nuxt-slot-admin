@@ -1,7 +1,7 @@
 import axios from 'axios'
-import config from './config'
-const POST_TYPE = 'bonuses'
-class DAL_Bonuses {
+import config from './config';
+const POST_TYPE = 'slots'
+class DAL_Slots {
     static getPosts(data) {
         return axios.post(config.API_URL + `admin/${POST_TYPE}`, data)
     }
@@ -18,4 +18,4 @@ class DAL_Bonuses {
         return axios.post(config.API_URL + `admin/${POST_TYPE}/delete`, data)
     }
 }
-export default DAL_Bonuses
+export default DAL_Slots
