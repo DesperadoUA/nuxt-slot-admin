@@ -1,5 +1,5 @@
-import DAL from '../DAL/bonuses'
-const POST_TYPE = 'bonuses'
+import DAL from '../DAL/slots'
+const POST_TYPE = 'slot'
 export const state = () => ({
     [POST_TYPE]: {
         currentPage: {},

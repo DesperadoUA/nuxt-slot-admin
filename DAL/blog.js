@@ -1,6 +1,6 @@
 import axios from 'axios'
 import config from './config'
-const POST_TYPE = 'bonuses'
+const POST_TYPE = 'blog'
 class DAL {
     static getPosts(data) {
         return axios.post(config.API_URL + `admin/${POST_TYPE}`, data)

@@ -23,7 +23,7 @@
 <script>
 import commonAdd from '../../../components/templates/commonAdd.vue'
     export default {
-        name: "singleCasinoAdd",
+        name: "singleVendorAdd",
         layout: 'admin',
         components: {commonAdd},
         mounted() {   
@@ -31,8 +31,8 @@ import commonAdd from '../../../components/templates/commonAdd.vue'
                title:  '',
                status: 'public',
                lang: 'ru',
-               post_type: 'slot',
-               slug: 'slots',
+               post_type: 'vendor',
+               slug: 'vendors',
                meta_title: '',
                description: '',
                keywords: '',
@@ -50,7 +50,7 @@ import commonAdd from '../../../components/templates/commonAdd.vue'
               data:{
                 body: undefined
               },
-              POST_TYPE: 'slots'
+              POST_TYPE: 'vendor'
           }
         },
         methods: {

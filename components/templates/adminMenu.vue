@@ -282,10 +282,10 @@
                     {title:'OPTIONS', url:'/admin/options', icon:'mdi-share-variant'},
                     {title:'CASINO', url:'/admin/casino', icon:'mdi-cash-usd'},
                     {title:'BLOG', url:'/admin/blog', icon:'mdi-blogger'},
-                    {title:'VENDORS', url:'/admin/vendors', icon:'mdi-android-studio'},
-                    {title:'PAYMENTS', url:'/admin/payments', icon:'mdi-cash'},
-                    {title:'SLOTS', url:'/admin/slots', icon:'mdi-gamepad-variant'},
-                    {title:'BONUSES', url:'/admin/bonuses', icon:'mdi-cake'},
+                    {title:'VENDORS', url:'/admin/vendor', icon:'mdi-android-studio'},
+                    {title:'PAYMENTS', url:'/admin/payment', icon:'mdi-cash'},
+                    {title:'SLOTS', url:'/admin/slot', icon:'mdi-gamepad-variant'},
+                    {title:'BONUSES', url:'/admin/bonus', icon:'mdi-cake'},
                 ],
                 casinoPage: [
                     { title: 'All casino', link: '/admin/casino' },
@@ -296,20 +296,20 @@
                     { title: 'Add blog', link: '/admin/blog/add' }
                 ],
                 vendorsPage: [
-                    { title: 'All vendors', link: '/admin/vendors' },
-                    { title: 'Add vendors', link: '/admin/vendors/add' }
+                    { title: 'All vendors', link: '/admin/vendor' },
+                    { title: 'Add vendors', link: '/admin/vendor/add' }
                 ],
                 paymentsPage: [
-                    { title: 'All payments', link: '/admin/payments' },
-                    { title: 'Add payments', link: '/admin/payments/add' }
+                    { title: 'All payments', link: '/admin/payment' },
+                    { title: 'Add payments', link: '/admin/payment/add' }
                 ],
                 slotsPage: [
-                    { title: 'All slots', link: '/admin/slots' },
-                    { title: 'Add slots', link: '/admin/slots/add' }
+                    { title: 'All slots', link: '/admin/slot' },
+                    { title: 'Add slots', link: '/admin/slot/add' }
                 ],
                 bonusesPage: [
-                    { title: 'All bonuses', link: '/admin/bonuses' },
-                    { title: 'Add bonus', link: '/admin/bonuses/add' }
+                    { title: 'All bonuses', link: '/admin/bonus' },
+                    { title: 'Add bonus', link: '/admin/bonus/add' }
                 ],
             }
         },

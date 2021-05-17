@@ -91,9 +91,6 @@
         components: {MM_Multiple_Input_Text, MM_Input, MM_Rating, MM_Multiple_Input, MM_Checkbox},
         data() {
             return {}
-        },
-        mounted(){
-            console.log(this.data)
         }
     }
 </script>

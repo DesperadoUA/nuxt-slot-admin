@@ -3,7 +3,7 @@
     <v-container class="container--fluid">
       <v-row>
         <v-col class="offset-1 col-10 mt-10">
-          <h1 class="page_title font-podkova-bold">Blog</h1>
+          <h1 class="page_title font-podkova-bold">Slots</h1>
         </v-col>
       </v-row>
       <v-row>
@@ -78,7 +78,7 @@
    import TotalPosts from '../../../components/templates/totalPosts'
    import MM_Paginations from '../../../components/lib/MM_Paginations'
     export default {
-        name: "blog",
+        name: "slots",
         layout: 'admin',
         component: {CategoryLoop, TotalPosts, MM_Paginations},
         async mounted() {
@@ -113,16 +113,16 @@
         },
         data(){
           return {
-              POST_TYPE: 'blog',
+              POST_TYPE: 'slot',
               data: {
                   ru: {
-                      post_slug: 'blog',
+                      post_slug: 'slot',
                       lang: 'ru',
                       posts: [],
                       total: 0
                   },
                   ua: {
-                      post_slug: 'blog',
+                      post_slug: 'slot',
                       lang: 'ua',
                       posts: [],
                       total: 0

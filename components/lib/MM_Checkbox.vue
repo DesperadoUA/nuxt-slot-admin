@@ -1,5 +1,5 @@
 <template>
-  <v-container class="container--fluid pa-0">
+  <v-container class="container--fluid pa-0 mt-3 mb-3">
     <v-row>
       <v-col class="offset-1 col-10 font-podkova-bold blue-grey darken-4">
         <v-expansion-panels inset>

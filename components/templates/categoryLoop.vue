@@ -50,7 +50,7 @@
         </v-col>
         <v-col class="col-2 text-right">
           <v-btn class="deep-orange darken-2"
-                 :to="`/admin/${post.slug}/${post.id}`"
+                 :to="`/admin/${post.post_type}/${post.id}`"
           >Edit
             <v-icon dark
                     right>mdi-tooltip-edit</v-icon>

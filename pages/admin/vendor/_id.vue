@@ -39,10 +39,10 @@
 
 <script>
 import commonEdit from '../../../components/templates/commonEdit.vue'
-import postMeta from '../../../components/templates/adminBlogMeta'
+import postMeta from '../../../components/templates/adminVendorMeta'
 import snackeBar from '../../../components/templates/snackbar'
     export default {
-        name: "singleBlogPage",
+        name: "singleVendorPage",
         layout: 'admin',
         components: {commonEdit, postMeta, snackeBar},
         async mounted() {
@@ -57,7 +57,7 @@ import snackeBar from '../../../components/templates/snackbar'
         },
         data(){
           return {
-              POST_TYPE: 'blog',
+              POST_TYPE: 'vendor',
               data:{
                 body: undefined
               },

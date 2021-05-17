@@ -39,10 +39,10 @@
 
 <script>
 import commonEdit from '../../../components/templates/commonEdit.vue'
-import postMeta from '../../../components/templates/adminBonusMeta'
+import postMeta from '../../../components/templates/adminSlotMeta'
 import snackeBar from '../../../components/templates/snackbar'
     export default {
-        name: "singleBonusesPage",
+        name: "singleSlotPage",
         layout: 'admin',
         components: {commonEdit, postMeta, snackeBar},
         async mounted() {
@@ -57,7 +57,7 @@ import snackeBar from '../../../components/templates/snackbar'
         },
         data(){
           return {
-              POST_TYPE: 'bonuses',
+              POST_TYPE: 'slot',
               data:{
                 body: undefined
               },
