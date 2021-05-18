@@ -1,5 +1,5 @@
 <template>
-  <v-container class="container--fluid pa-0 mt-3 mb-3">
+  <v-container class="container--fluid pa-0">
     <v-row>
       <v-col class="offset-1 col-10 font-podkova-bold blue-grey darken-4">
         <v-expansion-panels inset>
@@ -37,6 +37,12 @@
 </template>
 
 <script>
+/** 
+ * value{
+ *   current_value: ['title_1', 'title_2', 'title_3']
+ *   all_value: ['title_1', 'title_2', 'title_3', 'title_4', 'title_5']
+ * }
+ * **/
     export default {
         name: "MM_Relative_Posts",
         props: ['value', 'title', 'action', 'action_key', 'multiple'],
@@ -62,7 +68,7 @@
           }
         },
         mounted(){
-          console.log(this.action)
+          console.log(this.value)
           this.chips = this.value.current_value
           this.items = this.value.all_value
         }

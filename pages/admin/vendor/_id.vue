@@ -8,6 +8,10 @@
                      :data = "data.body"
                      :action = 'POST_TYPE + "/changeStateCurrentPost"'>
     </postMeta>
+    <postRelative v-if='data.body' 
+                     :data = "data.body"
+                     :action = 'POST_TYPE + "/changeStateCurrentPost"'>
+    </postRelative>
     <v-container>
         <v-row>
           <v-col class="offset-1 col-10 mt-5 mb-10">
@@ -40,11 +44,12 @@
 <script>
 import commonEdit from '../../../components/templates/commonEdit'
 import postMeta from '../../../components/templates/meta/Vendor'
+import postRelative from '../../../components/templates/relative/Vendor'
 import snackeBar from '../../../components/templates/snackbar'
     export default {
         name: "singleVendorPage",
         layout: 'admin',
-        components: {commonEdit, postMeta, snackeBar},
+        components: {commonEdit, postMeta, snackeBar, postRelative},
         async mounted() {
             const user = this.$store.getters['user/getUser']
             const data = {
