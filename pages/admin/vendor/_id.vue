@@ -38,8 +38,8 @@
 </template>
 
 <script>
-import commonEdit from '../../../components/templates/commonEdit.vue'
-import postMeta from '../../../components/templates/adminVendorMeta'
+import commonEdit from '../../../components/templates/commonEdit'
+import postMeta from '../../../components/templates/meta/Vendor'
 import snackeBar from '../../../components/templates/snackbar'
     export default {
         name: "singleVendorPage",

@@ -14,7 +14,7 @@
 </template>
 
 <script>
-    import MM_Input from '../lib/MM_Input'
+    import MM_Input from '../../lib/MM_Input'
     export default {
         name: "blogMeta",
         props: ['data', 'action'],

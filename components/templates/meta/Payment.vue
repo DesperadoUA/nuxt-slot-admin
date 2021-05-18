@@ -20,10 +20,10 @@
 </template>
 
 <script>
-    import MM_Multiple_Input_Text from '../lib/MM_Multiple_Input_Text'
-    import MM_Input from '../lib/MM_Input'
+    import MM_Multiple_Input_Text from '../../lib/MM_Multiple_Input_Text'
+    import MM_Input from '../../lib/MM_Input'
     export default {
-        name: "casinoMeta",
+        name: "paymentMeta",
         props: ['data', 'action'],
         components: {MM_Multiple_Input_Text, MM_Input},
         data() {

@@ -38,8 +38,8 @@
 </template>
 
 <script>
-import commonEdit from '../../../components/templates/commonEdit.vue'
-import postMeta from '../../../components/templates/adminSlotMeta'
+import commonEdit from '../../../components/templates/commonEdit'
+import postMeta from '../../../components/templates/meta/Slot'
 import snackeBar from '../../../components/templates/snackbar'
     export default {
         name: "singleSlotPage",

@@ -26,13 +26,13 @@
 </template>
 
 <script>
-    import MM_Multiple_Input_Text from '../lib/MM_Multiple_Input_Text'
-    import MM_Input from '../lib/MM_Input'
-    import MM_Rating from '../lib/MM_Rating'
-    import MM_Multiple_Input from '../lib/MM_Multiple_Input'
-    import MM_Checkbox from '../lib/MM_Checkbox'
+    import MM_Multiple_Input_Text from '../../lib/MM_Multiple_Input_Text'
+    import MM_Input from '../../lib/MM_Input'
+    import MM_Rating from '../../lib/MM_Rating'
+    import MM_Multiple_Input from '../../lib/MM_Multiple_Input'
+    import MM_Checkbox from '../../lib/MM_Checkbox'
     export default {
-        name: "casinoMeta",
+        name: "bonusMeta",
         props: ['data', 'action'],
         components: {MM_Multiple_Input_Text, MM_Input, MM_Rating, MM_Multiple_Input, MM_Checkbox},
         data() {

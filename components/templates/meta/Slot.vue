@@ -69,10 +69,10 @@
 </template>
 
 <script>
-    import MM_Multiple_Input_Text from '../lib/MM_Multiple_Input_Text'
-    import MM_Input from '../lib/MM_Input'
-    import MM_Multiple_Input from '../lib/MM_Multiple_Input'
-    import MM_Checkbox from '../lib/MM_Checkbox'
+    import MM_Multiple_Input_Text from '../../lib/MM_Multiple_Input_Text'
+    import MM_Input from '../../lib/MM_Input'
+    import MM_Multiple_Input from '../../lib/MM_Multiple_Input'
+    import MM_Checkbox from '../../lib/MM_Checkbox'
     export default {
         name: "slotMeta",
         props: ['data', 'action'],

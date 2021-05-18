@@ -39,7 +39,7 @@
 
 <script>
 import commonEdit from '../../../components/templates/commonEdit.vue'
-import postMeta from '../../../components/templates/adminBonusMeta'
+import postMeta from '../../../components/templates/meta/Bonus'
 import snackeBar from '../../../components/templates/snackbar'
     export default {
         name: "singleBonusesPage",
