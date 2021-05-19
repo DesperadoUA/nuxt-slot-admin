@@ -68,7 +68,6 @@
           }
         },
         mounted(){
-          console.log(this.value)
           this.chips = this.value.current_value
           this.items = this.value.all_value
         }
