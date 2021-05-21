@@ -8,6 +8,12 @@
                     :title = '"Rtp"' 
                     :action_key = '"rtp"'
                 />
+                 <MM_Rating 
+                    :value = 'data.rating'
+                    :action = 'action' 
+                    :title = '"Rating"' 
+                    :action_key = '"rating"'
+                />
                 <MM_Input
                     :value = 'data.min_bet'
                     :action = 'action' 

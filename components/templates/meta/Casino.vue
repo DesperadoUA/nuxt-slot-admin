@@ -9,6 +9,17 @@
                     :action_key = '"ref"'
                     />
                 <MM_Input
+                    :value = 'data.license'
+                    :action = 'action' 
+                    :title = '"License"' 
+                    :action_key = '"license"'
+                    />
+                <MM_Image v-if = 'data' 
+                    :value = 'data.icon' 
+                    :title = '"Icon"'
+                    :action = 'action'
+                    :action_key = '"icon"' />
+                <MM_Input
                     :value = 'data.faq_title'
                     :action = 'action' 
                     :title = '"Faq title"' 
