@@ -20,6 +20,12 @@
                     :title = '"Bonus wagering"' 
                     :action_key = '"bonus_wagering"'
                 />
+                <MM_Checkbox 
+                    :value = 'data.show_on_main'
+                    :action = 'action' 
+                    :title = '"Show on main page"' 
+                    :action_key = '"show_on_main"'
+                />
             </v-col>
         </v-row>
     </v-container>
