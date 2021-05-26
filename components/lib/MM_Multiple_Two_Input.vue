@@ -6,22 +6,33 @@
           <v-expansion-panel>
             <v-expansion-panel-header >{{title}}</v-expansion-panel-header>
             <v-expansion-panel-content class="pt-4">
-              <v-row v-for="(item, index) in value" :key="index">
-                <v-col class="col-6">
+              <v-row v-for="(item, index) in currentData" :key="index">
+                <v-col class="col-5">
                   <v-text-field
                                 prepend-icon="mdi-tooltip-edit"
                                 type="text"
                                 color="deep-orange darken-2"
-                                v-model="value[index].item_1"
+                                v-model = "currentData[index].value_1"
+                                @change = "change"
                   ></v-text-field>
                 </v-col>
-                <v-col class="col-6">
+                <v-col class="col-5">
                   <v-text-field
                                 prepend-icon="mdi-tooltip-edit"
                                 type="text"
                                 color="deep-orange darken-2"
-                                v-model="value[index].item_2"
+                                v-model = "currentData[index].value_2"
+                                @change = "change"
                   ></v-text-field>
+                </v-col>
+                <v-col class="col-2 text-right">
+                  <v-btn
+                      class="deep-orange darken-2 font-podkova-bold mt-5"
+                      @click="deleteItem(item)"
+                  >
+                  <v-icon left>mdi-delete</v-icon>
+                  Delete
+                  </v-btn>
                 </v-col>
               </v-row>
               <v-btn
@@ -42,34 +53,42 @@
 <script>
     export default {
         name: "MM_Multiple_Two_Input",
+        props: ['value', 'title', 'action', 'action_key'],
         data(){
             return {
-                title: 'Multiple Two Input',
-                value: [
-                         {
-                             item_1: 'Value 1_1',
-                             item_2: 'Value 1_2'
-                         },
-                         {
-                              item_1: 'Value 2_1',
-                              item_2: 'Value 2_2'
-                         },
-                         {
-                              item_1: 'Value 3_1',
-                              item_2: 'Value 3_2'
-                         },
-                         {
-                              item_1: 'Value 4_1',
-                              item_2: 'Value 4_2'
-                         }
-                    ]
+               currentData: []
             }
         },
         methods: {
-            addItem(){
-                this.value.push({item_1: '', item_2: ''})
-                console.log(this.value)
+             addItem() {
+              this.currentData.push({
+                value_1: '',
+                value_2: ''
+              })
+              const currentData = {
+                      key: this.action_key,
+                      value: this.currentData
+                    }
+              this.$store.dispatch(this.action, currentData)
+             },
+             change(){
+              const currentData = {
+                      key: this.action_key,
+                      value: this.currentData
+                    }
+              this.$store.dispatch(this.action, currentData)
+             },
+             deleteItem(item){
+              this.currentData = this.currentData.filter(obj => obj !== item)
+              const currentData = {
+                      key: this.action_key,
+                      value: this.currentData
+                    }
+              this.$store.dispatch(this.action, currentData) 
             }
+        },
+        mounted() {
+          this.currentData = this.value
         }
     }
 </script>

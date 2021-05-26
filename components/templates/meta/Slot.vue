@@ -69,6 +69,11 @@
                     :title = '"Wild symbol"' 
                     :action_key = '"wild_symbol"'
                 />
+                <MM_Image v-if = 'data' 
+                    :value = 'data.icon' 
+                    :title = '"Icon"'
+                    :action = 'action'
+                    :action_key = '"icon"' />
             </v-col>
         </v-row>
     </v-container>

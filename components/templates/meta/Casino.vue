@@ -85,6 +85,17 @@
                     :title = '"Freespins wagering"' 
                     :action_key = '"freespins_wagering"'
                 />
+                <MM_Multiple_Two_Input
+                    :value = 'data.details'
+                    :action = 'action' 
+                    :title = '"Details"' 
+                    :action_key = '"details"'
+                    />
+                <MM_Multiple_Options  
+                    :value = 'data.type_games'
+                    :action = 'action' 
+                    :title = '"Type games"' 
+                    :action_key = '"type_games"'/>
             </v-col>
         </v-row>
     </v-container>
@@ -96,10 +107,12 @@
     import MM_Rating from '../../lib/MM_Rating'
     import MM_Multiple_Input from '../../lib/MM_Multiple_Input'
     import MM_Checkbox from '../../lib/MM_Checkbox'
+    import MM_Multiple_Two_Input from '../../lib/MM_Multiple_Two_Input'
+    import MM_Multiple_Options from '../../lib/MM_Multiple_Options'
     export default {
         name: "casinoMeta",
         props: ['data', 'action'],
-        components: {MM_Multiple_Input_Text, MM_Input, MM_Rating, MM_Multiple_Input, MM_Checkbox},
+        components: {MM_Multiple_Input_Text, MM_Input, MM_Rating, MM_Multiple_Input, MM_Checkbox, MM_Multiple_Two_Input},
         data() {
             return {}
         }

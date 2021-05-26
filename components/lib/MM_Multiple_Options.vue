@@ -8,7 +8,7 @@
               <v-expansion-panel-content class="pt-4">
                 <v-container fluid>
                   <v-select
-                          v-model="value"
+                          v-model="chips"
                           :items="items"
                           label="Select items"
                           multiple
@@ -19,7 +19,7 @@
                               @click="toggle"
                       >
                         <v-list-item-action>
-                          <v-icon :color="value.length > 0 ? 'deep-orange darken-2' : ''">
+                          <v-icon :color="chips.length > 0 ? 'deep-orange darken-2' : ''">
                             {{ icon }}
                           </v-icon>
                         </v-list-item-action>
@@ -78,6 +78,7 @@
 <script>
     export default {
         name: "MM_Multiple_Options",
+        props: ['value', 'title', 'action', 'action_key', 'multiple'],
         data: () => ({
             items: [
                 'Apples',
@@ -127,35 +128,46 @@
                 'Watermelons',
                 'Zucchini',
             ],
-            value: ['Starfruit'],
-            title: 'MM_Multiple_Options'
+            chips: [],
         }),
 
         computed: {
             allItems () {
-                return this.value.length === this.items.length
+                return this.chips.length === this.items.length
             },
             selectItems () {
-                return this.value.length > 0 && !this.allItems
+                return this.chips.length > 0 && !this.allItems
             },
             icon () {
                 if (this.allItems) return 'mdi-close-box'
                 if (this.selectItems) return 'mdi-minus-box'
                 return 'mdi-checkbox-blank-outline'
-            },
+            },   
         },
-
+        watch: {
+          chips() {
+            const currenData = {
+                      key: this.action_key,
+                      value: this.chips
+                    }
+            this.$store.dispatch(this.action, currenData) 
+          }
+        },
         methods: {
             toggle () {
                 this.$nextTick(() => {
                     if (this.allItems) {
-                        this.value = []
+                        this.chips = []
                     } else {
-                        this.value = this.items.slice()
+                        this.chips = this.items.slice()
                     }
                 })
             },
         },
+        mounted(){
+          this.chips = this.value.current_value
+          this.items = this.value.all_value
+        }
     }
 </script>
 
