@@ -42,10 +42,10 @@
 </template>
 
 <script>
-import commonEdit from '../../../components/templates/commonEdit'
-import postMeta from '../../../components/templates/meta/Casino'
-import postRelative from '../../../components/templates/relative/Casino'
-import snackeBar from '../../../components/templates/snackbar'
+import commonEdit from '~/components/templates/commonEdit'
+import postMeta from '~/components/templates/meta/Casino'
+import postRelative from '~/components/templates/relative/Casino'
+import snackeBar from '~/components/templates/snackbar'
     export default {
         name: "singleCasinoPage",
         layout: 'admin',

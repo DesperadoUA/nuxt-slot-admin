@@ -42,10 +42,10 @@
 </template>
 
 <script>
-import commonEdit from '../../../components/templates/commonEdit'
-import postMeta from '../../../components/templates/meta/Slot'
-import postRelative from '../../../components/templates/relative/Slot'
-import snackeBar from '../../../components/templates/snackbar'
+import commonEdit from '~/components/templates/commonEdit'
+import postMeta from '~/components/templates/meta/Slot'
+import postRelative from '~/components/templates/relative/Slot'
+import snackeBar from '~/components/templates/snackbar'
     export default {
         name: "singleSlotPage",
         layout: 'admin',

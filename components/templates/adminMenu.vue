@@ -255,6 +255,66 @@
               </v-list-item>
             </v-list>
           </v-menu>
+          <v-menu
+                  transition="slide-y-transition"
+                  bottom
+                  no-prefetch
+                  class="d-block"
+          >
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                      class="deep-orange mt-5 darken-2 justify-start display_block font-podkova-bold"
+                      dark
+                      v-bind="attrs"
+                      v-on="on"
+              >
+                <v-icon left>mdi-folder-multiple-outline</v-icon>
+                News
+              </v-btn>
+            </template>
+            <v-list>
+              <v-list-item
+                      no-prefetch
+                      class="font-podkova-bold"
+                      v-for="(item, i) in newsPage"
+                      :key="i" :to="item.link"
+              >
+                <v-list-item-title>
+                  {{ item.title }}
+                </v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>
+          <v-menu
+                  transition="slide-y-transition"
+                  bottom
+                  no-prefetch
+                  class="d-block"
+          >
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                      class="deep-orange mt-5 darken-2 justify-start display_block font-podkova-bold"
+                      dark
+                      v-bind="attrs"
+                      v-on="on"
+              >
+                <v-icon left>mdi-folder-multiple-outline</v-icon>
+                Interview
+              </v-btn>
+            </template>
+            <v-list>
+              <v-list-item
+                      no-prefetch
+                      class="font-podkova-bold"
+                      v-for="(item, i) in interviewPage"
+                      :key="i" :to="item.link"
+              >
+                <v-list-item-title>
+                  {{ item.title }}
+                </v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>
         </v-layout>
         <v-layout class="justify-space-around mt-3 align-center">
           <v-btn class="deep-orange darken-2 display_block justify-start" color="deep-orange darken-2 font-podkova-bold"
@@ -286,6 +346,8 @@
                     {title:'PAYMENTS', url:'/admin/payment', icon:'mdi-cash'},
                     {title:'SLOTS', url:'/admin/slot', icon:'mdi-gamepad-variant'},
                     {title:'BONUSES', url:'/admin/bonus', icon:'mdi-cake'},
+                    {title:'NEWS', url:'/admin/news', icon:'mdi-blogger'},
+                    {title:'INTERVIEW', url:'/admin/interview', icon:'mdi-blogger'},
                 ],
                 casinoPage: [
                     { title: 'All casino', link: '/admin/casino' },
@@ -310,6 +372,14 @@
                 bonusesPage: [
                     { title: 'All bonuses', link: '/admin/bonus' },
                     { title: 'Add bonus', link: '/admin/bonus/add' }
+                ],
+                newsPage: [
+                    { title: 'All news', link: '/admin/news' },
+                    { title: 'Add news', link: '/admin/news/add' }
+                ],
+                interviewPage: [
+                    { title: 'All interview', link: '/admin/interview' },
+                    { title: 'Add interview', link: '/admin/interview/add' }
                 ],
             }
         },

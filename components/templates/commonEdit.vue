@@ -75,23 +75,24 @@
                                 :title = '"Thumbnail"'
                                 :action = 'action'
                                 :action_key = '"thumbnail"' />
-
+                    <MM_Media_Library />
            </v-col>
       </v-row>
     </v-container>
   </div>
 </template>
 <script>
-import MM_Input from '../../components/lib/MM_Input'
-import MM_Textarea from '../../components/lib/MM_Textarea'
-import MM_Rich_Text from '../../components/lib/MM_Rich_Text'
-import MM_Date from '../../components/lib/MM_Date'
-import MM_Options from '../../components/lib/MM_Options'
-import MM_Image from '../../components/lib/MM_Image'
+import MM_Input from '~/components/lib/MM_Input'
+import MM_Textarea from '~/components/lib/MM_Textarea'
+import MM_Rich_Text from '~/components/lib/MM_Rich_Text'
+import MM_Date from '~/components/lib/MM_Date'
+import MM_Options from '~/components/lib/MM_Options'
+import MM_Image from '~/components/lib/MM_Image'
+import MM_Media_Library from '~/components/lib/MM_Media_Library'
     export default {
         name: "commonEditStaticPage",
         props: ['data', 'action'],
-        components:{MM_Input, MM_Textarea, MM_Rich_Text, MM_Date, MM_Options, MM_Image},
+        components:{MM_Input, MM_Textarea, MM_Rich_Text, MM_Date, MM_Options, MM_Image, MM_Media_Library},
         data(){
           return {
             current_title: ''

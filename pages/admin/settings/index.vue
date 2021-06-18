@@ -20,17 +20,17 @@
 
               <v-tab href="#tab-1" >
                 Ru <img
-                      lazy-src="http://nuxt-slot-admin/img/ru.jpg"
+                      lazy-src="https://admin.onlinecasino.ua/img/ru.jpg"
                       class="lang"
-                      src="http://nuxt-slot-admin/img/ru.jpg"
+                      src="https://admin.onlinecasino.ua/img/ru.jpg"
               >
               </v-tab>
               <v-tab href="#tab-2" >
                 Ua
                 <img
-                        lazy-src="http://nuxt-slot-admin/img/ua.jpg"
+                        lazy-src="https://admin.onlinecasino.ua/img/ua.jpg"
                         class="lang"
-                        src="http://nuxt-slot-admin/img/ua.jpg"
+                        src="https://admin.onlinecasino.ua/img/ua.jpg"
                 >
               </v-tab>
             </v-tabs>
@@ -60,7 +60,7 @@
 </template>
 
 <script>
-    import OptionsLoop from '../../../components/templates/optionsLoop'
+    import OptionsLoop from '~/components/templates/optionsLoop'
     export default {
         name: "settings",
         layout: 'admin',

@@ -39,7 +39,7 @@
 
 <script>
 
-import snackeBar from '../../../components/templates/snackbar'
+import snackeBar from '~/components/templates/snackbar'
     export default {
         name: "singleOptions",
         layout: 'admin',

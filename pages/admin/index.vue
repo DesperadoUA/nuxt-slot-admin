@@ -3,7 +3,7 @@
 </template>
 
 <script>
-  import MainLoop from '../../components/templates/mainLoop'
+  import MainLoop from '~/components/templates/mainLoop'
     export default {
         name: "index.vue",
         layout: 'admin',

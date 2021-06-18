@@ -42,10 +42,10 @@
 </template>
 
 <script>
-import commonEdit from '../../../components/templates/commonEdit.vue'
-import postMeta from '../../../components/templates/meta/Bonus'
-import postRelative from '../../../components/templates/relative/Bonus'
-import snackeBar from '../../../components/templates/snackbar'
+import commonEdit from '~/components/templates/commonEdit.vue'
+import postMeta from '~/components/templates/meta/Bonus'
+import postRelative from '~/components/templates/relative/Bonus'
+import snackeBar from '~/components/templates/snackbar'
     export default {
         name: "singleBonusesPage",
         layout: 'admin',

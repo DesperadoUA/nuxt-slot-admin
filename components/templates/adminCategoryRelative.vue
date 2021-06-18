@@ -14,7 +14,7 @@
 </template>
 
 <script>
-    import MM_Relative_Posts from '../../components/lib/MM_Relative_Posts'
+    import MM_Relative_Posts from '~/components/lib/MM_Relative_Posts'
     export default {
         name: "adminCategoryRelative",
         props: ['data', 'action'],

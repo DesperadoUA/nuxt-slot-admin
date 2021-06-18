@@ -49,16 +49,18 @@
         data(){
             return {
                 cards: [
-                    {title: 'Static Pages', thumbnail: 'http://nuxt-slot-admin/img/static-page.jpg', link: '/admin/static-pages'},
-                    {title: 'Casino', thumbnail: 'http://nuxt-slot-admin/img/casino.png', link: '/admin/casino'},
-                    {title: 'Blog', thumbnail: 'http://nuxt-slot-admin/img/options.jpg', link: '/admin/blog'},
-                    {title: 'Vendors', thumbnail: 'http://nuxt-slot-admin/img/options.jpg', link: '/admin/vendor'},
-                    {title: 'Slots', thumbnail: 'http://nuxt-slot-admin/img/options.jpg', link: '/admin/slot'},
-                    {title: 'Payments', thumbnail: 'http://nuxt-slot-admin/img/options.jpg', link: '/admin/payment'},
-                    {title: 'Bonuses', thumbnail: 'http://nuxt-slot-admin/img/options.jpg', link: '/admin/bonus'},
-                    {title: 'Category', thumbnail: 'http://nuxt-slot-admin/img/category.png', link: '/admin/category'},
-                    {title: 'Settings', thumbnail: 'http://nuxt-slot-admin/img/settings.jpg', link: '/admin/settings'},
-                    {title: 'Options', thumbnail: 'http://nuxt-slot-admin/img/options.jpg', link: '/admin/options'},
+                    {title: 'Static Pages', thumbnail: 'https://admin.onlinecasino.ua/img/static_page.png', link: '/admin/static-pages'},
+                    {title: 'Casino', thumbnail: 'https://admin.onlinecasino.ua/img/casino.png', link: '/admin/casino'},
+                    {title: 'Blog', thumbnail: 'https://admin.onlinecasino.ua/img/blog.png', link: '/admin/blog'},
+                    {title: 'Vendors', thumbnail: 'https://admin.onlinecasino.ua/img/vendors.png', link: '/admin/vendor'},
+                    {title: 'Slots', thumbnail: 'https://admin.onlinecasino.ua/img/slots.png', link: '/admin/slot'},
+                    {title: 'Payments', thumbnail: 'https://admin.onlinecasino.ua/img/payments.png', link: '/admin/payment'},
+                    {title: 'Bonuses', thumbnail: 'https://admin.onlinecasino.ua/img/bonuses.png', link: '/admin/bonus'},
+                    {title: 'News', thumbnail: 'https://admin.onlinecasino.ua/img/news.png', link: '/admin/news'},
+                    {title: 'Interview', thumbnail: 'https://admin.onlinecasino.ua/img/interview.png', link: '/admin/interview'},
+                    {title: 'Category', thumbnail: 'https://admin.onlinecasino.ua/img/category.png', link: '/admin/category'},
+                    {title: 'Settings', thumbnail: 'https://admin.onlinecasino.ua/img/settings.png', link: '/admin/settings'},
+                    {title: 'Options', thumbnail: 'https://admin.onlinecasino.ua/img/options.png', link: '/admin/options'},
                 ]
             }
         },

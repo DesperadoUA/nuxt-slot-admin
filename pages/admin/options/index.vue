@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import optionsLoop from '../../../components/templates/optionsLoop'
+import optionsLoop from '~/components/templates/optionsLoop'
     export default {
   components: { optionsLoop },
         name: "options",

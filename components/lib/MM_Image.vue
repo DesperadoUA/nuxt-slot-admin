@@ -14,11 +14,11 @@
                 </div>
                 <div class="col-lg-3 col-xs-12">
                   <input type="file"
-                         id="file"
+                         :id="action_key"
                          class="mm_input margin_bottom_15 inputFile"
-                         ref="file"
+                         :ref="action_key"
                          @change="selectFile()"
-                  > <label for="file" class="mt-7">Choose a file ...</label>
+                  > <label :for="action_key" class="mt-7">Choose a file ...</label>
                 </div>
               </v-row>
             </v-expansion-panel-content>
@@ -37,8 +37,7 @@
         props: ['value', 'title', 'action', 'action_key'],
         methods:{
             async selectFile(){
-              const file = this.$refs.file.files[0]
-              console.log(this.$refs.file.files)
+              const file = this.$refs[this.action_key].files[0]
               if(file) {
                   const reader = new FileReader();
                   reader.onloadend = async () => {

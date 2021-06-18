@@ -1,11 +1,11 @@
 <template>
-  <v-container class="container--fluid pa-0 mt-3 mb-3">
+  <v-container class="container--fluid pa-0 mt-1 mb-1">
     <v-row>
       <v-col class="offset-1 col-10 font-podkova-bold blue-grey darken-4">
         <v-expansion-panels inset>
           <v-expansion-panel>
             <v-expansion-panel-header >{{title}}</v-expansion-panel-header>
-            <v-expansion-panel-content class="pt-4">
+            <v-expansion-panel-content>
               <v-text-field
                       prepend-icon="mdi-tooltip-edit"
                       type="text"

@@ -42,10 +42,10 @@
 </template>
 
 <script>
-import commonEdit from '../../../components/templates/commonEdit'
-import postMeta from '../../../components/templates/meta/Blog'
-import postRelative from '../../../components/templates/relative/Blog'
-import snackeBar from '../../../components/templates/snackbar'
+import commonEdit from '~/components/templates/commonEdit'
+import postMeta from '~/components/templates/meta/Blog'
+import postRelative from '~/components/templates/relative/Blog'
+import snackeBar from '~/components/templates/snackbar'
     export default {
         name: "singleBlogPage",
         layout: 'admin',

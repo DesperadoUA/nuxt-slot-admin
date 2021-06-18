@@ -2,6 +2,11 @@
     <v-container>
         <v-row>
             <v-col class="mt-0">
+                <MM_Multiple_Options  
+                    :value = 'data.type_game'
+                    :action = 'action' 
+                    :title = '"Type game"' 
+                    :action_key = '"type_game"'/>
                 <MM_Input
                     :value = 'data.rtp'
                     :action = 'action' 
@@ -25,6 +30,12 @@
                     :action = 'action' 
                     :title = '"Max bet"' 
                     :action_key = '"max_bet"'
+                />
+                <MM_Input
+                    :value = 'data.number_rows'
+                    :action = 'action' 
+                    :title = '"Number rows"' 
+                    :action_key = '"number_rows"'
                 />
                 <MM_Input
                     :value = 'data.pay_lines'
@@ -69,11 +80,18 @@
                     :title = '"Wild symbol"' 
                     :action_key = '"wild_symbol"'
                 />
-                <MM_Image v-if = 'data' 
+                <MM_Image 
                     :value = 'data.icon' 
                     :title = '"Icon"'
                     :action = 'action'
-                    :action_key = '"icon"' />
+                    :action_key = '"icon"' 
+                />
+                <MM_Multiple_Input
+                    :value = 'data.ref'
+                    :action = 'action' 
+                    :title = '"Referal link"' 
+                    :action_key = '"ref"'
+                />
             </v-col>
         </v-row>
     </v-container>
@@ -84,6 +102,7 @@
     import MM_Input from '../../lib/MM_Input'
     import MM_Multiple_Input from '../../lib/MM_Multiple_Input'
     import MM_Checkbox from '../../lib/MM_Checkbox'
+    import MM_Multiple_Options from '../../lib/MM_Multiple_Options'
     export default {
         name: "slotMeta",
         props: ['data', 'action'],

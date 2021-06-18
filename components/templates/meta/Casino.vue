@@ -96,6 +96,18 @@
                     :action = 'action' 
                     :title = '"Type games"' 
                     :action_key = '"type_games"'/>
+                <MM_Input
+                    :value = 'data.min_deposit'
+                    :action = 'action' 
+                    :title = '"Min deposit"' 
+                    :action_key = '"min_deposit"'
+                    />
+                <MM_Input
+                    :value = 'data.min_payout'
+                    :action = 'action' 
+                    :title = '"Min payout"' 
+                    :action_key = '"min_payout"'
+                    />
             </v-col>
         </v-row>
     </v-container>

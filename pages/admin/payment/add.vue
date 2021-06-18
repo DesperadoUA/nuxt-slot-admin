@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import commonAdd from '../../../components/templates/commonAdd.vue'
+import commonAdd from '~/components/templates/commonAdd.vue'
     export default {
         name: "singlePaymentAdd",
         layout: 'admin',

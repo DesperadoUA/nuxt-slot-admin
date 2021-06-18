@@ -29,9 +29,9 @@
 </template>
 
 <script>
-import commonEditStaticPage from '../../../components/templates/commonEditStaticPage'
-import adminCategoryRelative from '../../../components/templates/adminCategoryRelative'
-import snackeBar from '../../../components/templates/snackbar'
+import commonEditStaticPage from '~/components/templates/commonEditStaticPage'
+import adminCategoryRelative from '~/components/templates/adminCategoryRelative'
+import snackeBar from '~/components/templates/snackbar'
     export default {
         name: "singleCategoryPage",
         layout: 'admin',

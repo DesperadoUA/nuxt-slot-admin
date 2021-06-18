@@ -20,17 +20,17 @@
 
               <v-tab href="#tab-1" >
                 Ru <img
-                      lazy-src="http://nuxt-slot-admin/img/ru.jpg"
+                      lazy-src="https://admin.onlinecasino.ua/img/ru.jpg"
                       class="lang"
-                      src="http://nuxt-slot-admin/img/ru.jpg"
+                      src="https://admin.onlinecasino.ua/img/ru.jpg"
               >
               </v-tab>
               <v-tab href="#tab-2" >
                 Ua
                 <img
-                        lazy-src="http://nuxt-slot-admin/img/ua.jpg"
+                        lazy-src="https://admin.onlinecasino.ua/img/ua.jpg"
                         class="lang"
-                        src="http://nuxt-slot-admin/img/ua.jpg"
+                        src="https://admin.onlinecasino.ua/img/ua.jpg"
                 >
               </v-tab>
             </v-tabs>
@@ -43,6 +43,7 @@
                 <v-card >
                   <v-card-text class="black">
                     <div v-if="tab == 'tab-2'">
+                      <Search :postType="POST_TYPE" :lang="'2'" />
                       <CategoryLoop :data="postsUa" />
                       <TotalPosts :data="data.ua.total" />
                       <MM_Paginations :length = "Math.ceil(data.ua.total/numnerPostOnPage)"
@@ -53,6 +54,7 @@
                        />
                     </div>
                     <div v-else>
+                      <Search :postType="POST_TYPE" :lang="'1'" />
                       <CategoryLoop :data="postsRu" />
                       <TotalPosts :data="data.ru.total" />
                       <MM_Paginations :length = "Math.ceil(data.ru.total/numnerPostOnPage)" 
@@ -74,13 +76,14 @@
 </template>
 
 <script>
-   import CategoryLoop from '../../../components/templates/categoryLoop'
-   import TotalPosts from '../../../components/templates/totalPosts'
-   import MM_Paginations from '../../../components/lib/MM_Paginations'
+   import CategoryLoop from '~/components/templates/categoryLoop'
+   import TotalPosts from '~/components/templates/totalPosts'
+   import MM_Paginations from '~/components/lib/MM_Paginations'
+   import Search from '~/components/templates/search'
     export default {
         name: "payments",
         layout: 'admin',
-        component: {CategoryLoop, TotalPosts, MM_Paginations},
+        component: {CategoryLoop, TotalPosts, MM_Paginations, Search},
         async mounted() {
             this.data.ru.posts = []
             this.data.ua.posts = []

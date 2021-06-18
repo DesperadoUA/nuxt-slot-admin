@@ -19,6 +19,9 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', type: '', href: 'https://fonts.googleapis.com/css2?family=Podkova:wght@400;500;800&display=swap' }
+    ],
+    script: [
+      { hid: 'stripe', src: '/js/initial_canvas.js'}
     ]
   },
 

@@ -2,6 +2,12 @@
     <v-container>
         <v-row>
             <v-col class="mt-0">
+                <MM_Rating
+                        :value = 'data.rating'
+                        :action = 'action'
+                        :title = '"Rating"'
+                        :action_key = '"rating"'
+                />
                 <MM_Input
                     :value = 'data.faq_title'
                     :action = 'action' 
@@ -13,6 +19,12 @@
                     :action = 'action' 
                     :title = '"Faq"' 
                     :action_key = '"faq"'
+                    />
+                <MM_Input
+                    :value = 'data.short_text'
+                    :action = 'action' 
+                    :title = '"Short text"' 
+                    :action_key = '"short_text"'
                     />
             </v-col>
         </v-row>

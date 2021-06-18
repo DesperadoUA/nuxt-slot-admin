@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <MM_canvas />
     <v-container fluid fill-height>
       <v-layout align-center justify-center>
         <v-flex xs12 sm8 md3>
@@ -51,9 +52,11 @@
   </v-app>
 </template>
 <script>
-    import DAL_Login from '../DAL/login'
+    import DAL_Login from '~/DAL/login'
+    import MM_canvas from '~/components/templates/app_canvas'
     export default {
         name: "login",
+        components:{MM_canvas},
         data(){
             return {
                 email: '',
