@@ -53,5 +53,5 @@
   }
   .lang {
     width: 20px;
-}
+   }
 </style>

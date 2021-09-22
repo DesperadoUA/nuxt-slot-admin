@@ -54,6 +54,15 @@
           <v-btn
                   class="deep-orange darken-2 justify-start display_block mb-5 font-podkova-bold"
                   dark
+                  exact
+                  no-prefetch
+                  to="/admin/seo">
+            <v-icon left color="white">mdi-message-draw</v-icon>
+            SEO
+          </v-btn>
+          <v-btn
+                  class="deep-orange darken-2 justify-start display_block mb-5 font-podkova-bold"
+                  dark
                   no-prefetch
                   to="/admin/settings">
             <v-icon left color="white">mdi-message-draw</v-icon>

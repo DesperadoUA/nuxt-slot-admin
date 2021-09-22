@@ -29,7 +29,7 @@ import commonAdd from '~/components/templates/commonAdd.vue'
         mounted() {   
            this.data.body = {
                title:  '',
-               status: 'public',
+               status: 'hide',
                lang: 'ru',
                post_type: 'interview',
                slug: 'interview',

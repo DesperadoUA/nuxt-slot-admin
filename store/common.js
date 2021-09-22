@@ -3,7 +3,8 @@ export const state = () => ({
     lang: {
         1: 'ru',
         2: 'ua'
-    }
+    },
+    loading: false
 })
 export const mutations = {
     setError(state, payload){
@@ -11,6 +12,9 @@ export const mutations = {
     },
     clearError(state){
         state.error = null
+    },
+    setLoad(state, payload) {
+        state.loading = payload
     }
 }
 export const actions = {
@@ -19,6 +23,9 @@ export const actions = {
     },
     clearError({commit}){
         commit('clearError')
+    },
+    setLoad({commit}, payload){
+        commit('setLoad', payload)
     }
 }
 export const getters = {
@@ -27,5 +34,8 @@ export const getters = {
     },
     lang(state) {
         return state.lang
+    },
+    isLoading(state) {
+        return state.loading
     }
 }

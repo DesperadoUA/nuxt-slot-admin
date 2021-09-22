@@ -28,7 +28,7 @@
         data(){
             return {
                 editorOption: {
-                    debug: 'info',
+                    debug: 'false',
                     placeholder: 'Type this',
                     readOnly: true,
                     theme: 'snow'
