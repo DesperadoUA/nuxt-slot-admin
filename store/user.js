@@ -17,10 +17,12 @@ export const mutations = {
 }
 export const actions = {
     setUser({commit}, payload) {
+        localStorage.setItem('currentUser', JSON.stringify(payload))
         commit('setUser', payload)
     },
     async logout({commit}, payload){
         const result = await DAL_Login.logout(payload)
+        localStorage.removeItem('currentUser')
         if(result.data.confirm === 'ok') {
             const defaultObj = {
                 id: '',
@@ -30,6 +32,10 @@ export const actions = {
             }
             commit('setUser', defaultObj)
         }
+    },
+    async checkUser({commit}, payload){
+        const result = await DAL_Login.checkUser(payload)
+        return result.data.confirm
     }
 }
 export const getters = {

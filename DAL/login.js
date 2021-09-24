@@ -15,5 +15,8 @@ class DAL_Login {
     static logout(id) {
         return axios.post(config.API_URL+'logout', id)
     }
+    static checkUser(data) {
+        return axios.post(config.API_URL+'check-user', data)
+    }
 }
 export default DAL_Login
